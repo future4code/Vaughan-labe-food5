@@ -8,13 +8,13 @@ const FeedPage = () => {
     const  goToRestaurantDetail = (id) => {
         navigate(`/restaurante/${id}`);
     }
-  const { restaurants } = useContext(GlobalStateContext);
+  const { states } = useContext(GlobalStateContext);
   return (
     <div>
       <h1>Feed</h1>
       <div>
-        {restaurants &&
-          restaurants.map((restaurant, i) => (
+        {states.restaurants &&
+          states.restaurants.map((restaurant, i) => (
             <FeedCard key={i} restaurants={restaurant} onClickRestaurant={() =>  goToRestaurantDetail(restaurant.id)} />
           ))}
       </div>
