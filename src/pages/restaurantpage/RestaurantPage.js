@@ -38,7 +38,7 @@ const RestaurantPage = () => {
 <ModalQuantityFood/>
       {foods && foods.restaurant && (<div>
           
-          <img src={foods.restaurant.logoUrl}/>
+          <img src={foods.restaurant.logoUrl} style={{width: '180px'}}/>
           <h1>{foods.restaurant.name}</h1>
           <p>{foods.restaurant.category}</p>
           <p>{foods.restaurant.deliveryTime} min  Frete R$ {foods.restaurant.shipping}</p>
