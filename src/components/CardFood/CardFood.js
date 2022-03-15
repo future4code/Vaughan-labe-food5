@@ -23,7 +23,7 @@ const CardFood = (props) => {
         </Typography>
         <Typography variant="h6">R$: {props.price}</Typography>
         <ButtonCnt>
-          <Button color="secondary" variant="contained">
+          <Button color="primary" variant="outlined">
             Adicionar
           </Button>
         </ButtonCnt>

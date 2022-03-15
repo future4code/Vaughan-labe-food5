@@ -3,13 +3,13 @@ import CardFood from "../../components/CardFood/CardFood";
 import ModalQuantityFood from "../../components/ModalQuantityFood/ModalQuantityFood";
 import { BASE_URL } from "../../constants/urls";
 import { useRequestData } from "../../hooks/useRequestData";
-import {useProtectedPage} from "../../hooks/useProtectedPage"
+//import {useProtectedPage} from "../../hooks/useProtectedPage"
 
 const RestaurantPage = () => {
   const [foods, isLoadingFoods, errorFoods] = useRequestData(
-    `${BASE_URL}/restaurants/2`
+    `${BASE_URL}/restaurants/5`
   );
-  useProtectedPage();
+  // useProtectedPage();
   console.log(
     "CONSOLE RESTAUTANT PAGE produts",
     foods && foods.restaurant && foods.restaurant
