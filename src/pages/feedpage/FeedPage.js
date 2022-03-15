@@ -1,34 +1,19 @@
-import axios from 'axios';
-import React, { useContext, useState } from 'react';
-import FeedCard from '../../components/FeedCard/FeedCard';
-import { GlobalStateContext } from '../../components/Global/GlobalStateContext';
-import { BASE_URL } from '../../constants/urls';
-import useRequestData from '../../hooks/useRequestData';
-
+import React, { useContext, useState } from "react";
+import FeedCard from "../../components/FeedCard/FeedCard";
+import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 
 const FeedPage = () => {
-    const [restaurants, setRestaurants] = useState([]);
-    const feeds = useRequestData([], `${BASE_URL}/restaurants`);
-    
-    
-    const feedCards = feeds.map((feed) => {
-        
-        return (
-            <div key={feed[0]}>
-              <FeedCard 
-                name={feed[0]}
-            />
-            </div>
-          );
-        });
-        
-
-    return (
-        <div>
-            <h1>Feed</h1>
-            
-        </div>
-      );
-}
-
+  const { restaurants } = useContext(GlobalStateContext);
+  return (
+    <div>
+      <h1>Feed</h1>
+      <div>
+        {restaurants &&
+          restaurants.map((restaurant, i) => (
+            <FeedCard key={i} restaurants={restaurant} />
+          ))}
+      </div>
+    </div>
+  );
+};
 export default FeedPage;
