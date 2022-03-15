@@ -9,6 +9,7 @@ export const ImgCard = styled.img`
   border-radius: 1rem 0 0 1rem;
   margin-right: 1rem;
   width: 35%;
+  object-fit: cover;
   padding: 1rem;
 `;
 
