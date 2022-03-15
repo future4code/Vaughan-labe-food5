@@ -123,7 +123,7 @@ const ModalQuantityFood = () => {
           ))}
         </TextField>
         </CtnMargin>
-        <Button color="primary" >Adicionar ao carrinho</Button>
+        <Button color="secondary" >Adicionar ao carrinho</Button>
         
         </Box>
       </Modal>
