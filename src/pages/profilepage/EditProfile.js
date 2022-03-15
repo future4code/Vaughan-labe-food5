@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import TextFieldStyled from "@material-ui/core/TextField";
-import useForm from "../../hooks/useForm";
+import {useFormPerfil} from "../../hooks/useForm";
 import back from "../../assets/back.svg";
 import { useNavigate } from "react-router-dom";
-import { Title, Container, RegisteredProfile, EditContainer, SaveEditProfile } from './styled';
+import { Title, SaveEditProfile, EditProfileContainer } from './styled';
 import { handleProfile } from "../../axiosRequests/user";
 import Footer from "../../components/Footer/Footer";
 
 const EditProfile = () => {
   const navigate= useNavigate();
-  const [form, onChange, clear] = useForm({ name: "", email: "", cpf: "" });
+  const [form, onChange, clear] = useFormPerfil({ name: "", email: "", cpf: "" });
 
   const handleSubmission = (event) => {
     event.preventDefault();
@@ -23,11 +23,8 @@ const EditProfile = () => {
   return (
     <>
       <img src={back} onClick={goBack} />
-
-      <Title>
-      <h1>Editar Perfil</h1>
-      </Title>
-
+    
+        <EditProfileContainer>
       <TextFieldStyled
         onSubmit={handleSubmission}
         name="name"
@@ -59,7 +56,9 @@ const EditProfile = () => {
         required
       />
       <SaveEditProfile
-      onClick={handleSubmission}>SALVAR</SaveEditProfile>
+      onClick={handleSubmission}>
+          SALVAR</SaveEditProfile>
+        </EditProfileContainer>
       <Footer />
     </>
   );

@@ -3,7 +3,7 @@ import FeedCard from "../../components/FeedCard/FeedCard";
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import { useNavigate } from "react-router-dom";
 const FeedPage = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const  goToRestaurantDetail = (id) => {
         navigate(`/restaurante/${id}`);

@@ -11,7 +11,7 @@ export const goToAdress = (navigate) => {
 };
 
 export const goToFeed = (navigate) => {
-    navigate("/")
+    navigate("/home")
 };
 
 export const goToProfile = (navigate) => {

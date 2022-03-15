@@ -17,7 +17,7 @@ const Address = () => {
   };
 
   const goBack = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   return (
