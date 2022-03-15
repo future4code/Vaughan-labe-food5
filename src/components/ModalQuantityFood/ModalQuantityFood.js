@@ -3,12 +3,13 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import {CtnMargin, CtnCloseBtn} from './styled';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
+import {GlobalStateContext} from "../Global/GlobalStateContext";
 
 const quantities = [
     {
@@ -62,11 +63,12 @@ const quantities = [
   ];
 
 
-const ModalQuantityFood = () => {
+const ModalQuantityFood = (props) => {
+  //   const { states, sets } = useContext(GlobalStateContext)
     const [quantity, setQuantity] = useState(null)
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+  //  // const [open, setOpen] = useState(false);
+  //   const handleOpen = () => sets.setOpenModal(true);
+  //   const handleClose = () => sets.setOpenModal(false);
 
     const handleChange = (event) => {
         setQuantity(event.target.value);
@@ -77,7 +79,7 @@ const ModalQuantityFood = () => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
+    width: 300,
     bgcolor: "white",
     borderRadius: "5px",
     boxShadow: 24,
@@ -90,10 +92,10 @@ const ModalQuantityFood = () => {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={props.onClickOpen}>Open modal</Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={props.value}
+        onClose={props.onClickClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -101,7 +103,7 @@ const ModalQuantityFood = () => {
             <CtnCloseBtn>
 
          
-        <IconButton aria-label="close" onClick={handleClose} >
+        <IconButton aria-label="close" onClick={props.onClickClose} >
         <CloseIcon />
       </IconButton>
       </CtnCloseBtn>
