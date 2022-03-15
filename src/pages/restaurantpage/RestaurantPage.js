@@ -1,13 +1,15 @@
 import React from "react";
 import CardFood from "../../components/CardFood/CardFood";
+import ModalQuantityFood from "../../components/ModalQuantityFood/ModalQuantityFood";
 import { BASE_URL } from "../../constants/urls";
 import { useRequestData } from "../../hooks/useRequestData";
+//import {useProtectedPage} from "../../hooks/useProtectedPage"
 
 const RestaurantPage = () => {
   const [foods, isLoadingFoods, errorFoods] = useRequestData(
-    `${BASE_URL}/restaurants/1`
+    `${BASE_URL}/restaurants/5`
   );
-
+  // useProtectedPage();
   console.log(
     "CONSOLE RESTAUTANT PAGE produts",
     foods && foods.restaurant && foods.restaurant
@@ -30,7 +32,7 @@ const RestaurantPage = () => {
   return (
     <div>
       <h1>Restaurantes</h1>
-
+<ModalQuantityFood/>
       {foods && foods.restaurant && (<div>
           
           <img src={foods.restaurant.logoUrl}/>

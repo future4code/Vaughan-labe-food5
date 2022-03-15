@@ -9,13 +9,8 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.26.1",
-<<<<<<< HEAD
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-=======
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
->>>>>>> master
     "react-router-dom": "^6.2.2",
     "react-scripts": "3.4.1",
     "styled-components": "^5.3.3"

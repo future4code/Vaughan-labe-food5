@@ -1,31 +1,6 @@
-<<<<<<< HEAD
-import axios from "axios"
-import { useEffect, useState } from "react"
-
-const useRequestData = (initialData, url) => {
-    const [data, setData] = useState(initialData)
-
-    useEffect(()=>{
-        axios.get(url, {
-            headers: {
-                Auth: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkEwMDVtSEJmeVNrdDdPTjBITGFwIiwibmFtZSI6IkFzdHJvZGV2IiwiZW1haWwiOiJhc3Ryb2RldkBmdXR1cmU0LmNvbSIsImNwZiI6IjMzMy44ODguNjY2LTQ0IiwiaGFzQWRkcmVzcyI6dHJ1ZSwiYWRkcmVzcyI6IkJhbmFuaW5oYSwgOTgsIDY1IC0gQmFuYW5pbmhhIiwiaWF0IjoxNjQ3MjgxODYwfQ.v_AQdOG33NHtcXjizcAM6QR0qj-SCrtHx5VT0xM2XcE'
-            }
-        })
-        .then((res)=>{
-            setData(res.data)
-        })
-        .catch((err)=>{
-            console.log(err)
-            alert('Ocorreu um erro, try again!')
-        })
-    }, [url])
-    return ([data])
-}
-
-export default useRequestData
-=======
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { getAuthToken } from "../constants/token";
 
 export function useRequestData(url) {
   const [data, setData] = useState(undefined);
@@ -43,7 +18,8 @@ export function useRequestData(url) {
     axios
       .get(url, {
           headers: {
-              auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkEwMDVtSEJmeVNrdDdPTjBITGFwIiwibmFtZSI6IkFzdHJvZGV2IiwiZW1haWwiOiJhc3Ryb2RldkBmdXR1cmU0LmNvbSIsImNwZiI6IjMzMy44ODguNjY2LTQ0IiwiaGFzQWRkcmVzcyI6dHJ1ZSwiYWRkcmVzcyI6IkJhbmFuaW5oYSwgOTgsIDY1IC0gQmFuYW5pbmhhIiwiaWF0IjoxNjQ3MjgyNjIxfQ.YO915QIkhl_oo-TgoxxKnBncYZx0z5Odwzvl5BcjZtM"
+            auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkEwMDVtSEJmeVNrdDdPTjBITGFwIiwibmFtZSI6ImFzdHJvZGV2MiIsImVtYWlsIjoiYXN0cm9kZXZAZnV0dXJlNC5jb20iLCJjcGYiOiIwMDg5NTU5OTk5OSIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSdWEgQmFuYW5hcywgMiAtIEJhbmFuYWwiLCJpYXQiOjE2NDczNjczMTV9.kMEJC9zIPFoT8LbSGTVyGQ4rJbJOuEQKze9w-28qKJU"
+              //auth: getAuthToken()
             // auth: window.localStorage.getItem("token")
           }
       })
@@ -59,4 +35,3 @@ export function useRequestData(url) {
 
   return [data, isLoading, error, getData];
 };
->>>>>>> master
