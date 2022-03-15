@@ -10,9 +10,10 @@ const FeedThumbnail = ({
   image,
   name,
   shipping,
+  onClickRestaurant,
 }) => {
   return (
-    <ConteinerThumb key={id}>
+    <ConteinerThumb key={id} onClick={onClickRestaurant}>
       <IMG src={image} alt={name} />
       <div>
         <h3>{name}</h3>

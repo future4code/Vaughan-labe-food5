@@ -16,6 +16,7 @@ const FeedCard = (props) => {
     <Conteiner>
       {props && (
         <FeedThumbnail
+          onClickRestaurant={props.onClickRestaurant}
           id={props.restaurants.id}
           name={props.restaurants.name}
           image={props.restaurants.logoUrl}
