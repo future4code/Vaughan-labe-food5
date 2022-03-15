@@ -7,7 +7,7 @@ export const goToLogin = (navigate) => {
 };
 
 export const goToAdress = (navigate) => {
-    navigate("/endereço")
+    navigate("/endereco")
 };
 
 export const goToFeed = (navigate) => {
@@ -23,5 +23,5 @@ export const goToEditProfile = (navigate) =>{
 };
 
 export const goToEditAddress = (navigate) =>{
-    navigate("/editarEndereço")
+    navigate("/editarEndereco")
 };
