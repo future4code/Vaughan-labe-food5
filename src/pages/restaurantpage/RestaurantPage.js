@@ -3,11 +3,14 @@ import CardFood from "../../components/CardFood/CardFood";
 import ModalQuantityFood from "../../components/ModalQuantityFood/ModalQuantityFood";
 import { BASE_URL } from "../../constants/urls";
 import { useRequestData } from "../../hooks/useRequestData";
+import { useParams } from "react-router-dom";
 //import {useProtectedPage} from "../../hooks/useProtectedPage"
 
 const RestaurantPage = () => {
+  const pathParams = useParams();
+  console.log("pathParamsn", pathParams)
   const [foods, isLoadingFoods, errorFoods] = useRequestData(
-    `${BASE_URL}/restaurants/5`
+    `${BASE_URL}/restaurants/${pathParams.id}`
   );
   // useProtectedPage();
   console.log(
