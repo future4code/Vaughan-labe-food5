@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../constants/urls";
+import { TextField } from '@material-ui/core'
 
 
 
@@ -41,21 +42,28 @@ const LoginPage = () => {
 
     return (
         <div>
-            <h1>Login</h1>
-            <input
-            placeholder="email"
-            type="email"
-            value={email}
-            onChange={onChangeEmail}            />
-            <input
-            placeholder="senha"
-            type="password"
-            value={password}
-            onChange={onChangePassword}
-            />
+            <h1>Entrar</h1>
             
+            
+        <TextField id="outlined-basic" label="E-mail" variant="outlined" 
+        
+        placeholder="email"
+        type="email"
+        value={email}
+        onChange={onChangeEmail}          
+                        
+        />
+        <TextField id="outlined-basic" label="E-mail" variant="outlined"
+
+        placeholder="senha"
+        type="password"
+        value={password}
+        onChange={onChangePassword}
+        
+        />
+        
             <button onClick={onSubmitLogin}>Entrar</button>
-            
+            <p>Não possui cadastro? Clique aqui.</p>
         </div>
     )
 }
