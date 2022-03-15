@@ -1,32 +1,55 @@
-import React from 'react';
-import CardFood from '../../components/CardFood/CardFood';
-
+import React from "react";
+import CardFood from "../../components/CardFood/CardFood";
+import { BASE_URL } from "../../constants/urls";
+import { useRequestData } from "../../hooks/useRequestData";
 
 const RestaurantPage = () => {
-    return (
-        <div>
-            <h1>Restaurantes</h1>
+  const [foods, isLoadingFoods, errorFoods] = useRequestData(
+    `${BASE_URL}/restaurants/1`
+  );
 
-            <CardFood 
-            image={"https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/d596c695-8f68-4ebf-9e09-da6e4e9d1672/201908081118_5Eiz_c.png"}
-            title={"hamburguer"}
-            description={"um hamburguer de carne bovina com cheddar, alface e tomate"}
-            price={"R$:27,99"}
-            />
-              <CardFood 
-            image={"https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/d596c695-8f68-4ebf-9e09-da6e4e9d1672/201908081118_5Eiz_c.png"}
-            title={"hamburguer"}
-            description={"um hamburguer de carne bovina com cheddar, alface e tomate"}
-            price={"R$:27,99"}
-            />
-              <CardFood 
-            image={"https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/d596c695-8f68-4ebf-9e09-da6e4e9d1672/201908081118_5Eiz_c.png"}
-            title={"hamburguer"}
-            description={"um hamburguer de carne bovina com cheddar, alface e tomate"}
-            price={"R$:27,99"}
-            />
-        </div>
+  console.log(
+    "CONSOLE RESTAUTANT PAGE produts",
+    foods && foods.restaurant && foods.restaurant
+  );
+
+  const listFoods =
+    foods &&
+    foods.restaurant &&
+    foods.restaurant.products.map((food) => {
+      return (
+        <CardFood
+          key={food.id}
+          title={food.name}
+          image={food.photoUrl}
+          description={food.description}
+          price={food.price}
+        />
       );
-}
+    });
+  return (
+    <div>
+      <h1>Restaurantes</h1>
+
+      {foods && foods.restaurant && (<div>
+          
+          <img src={foods.restaurant.logoUrl}/>
+          <h1>{foods.restaurant.name}</h1>
+          <p>{foods.restaurant.category}</p>
+          <p>{foods.restaurant.deliveryTime} min  Frete R$ {foods.restaurant.shipping}</p>
+          <p>{foods.restaurant.address}</p>
+      </div>
+      )}
+
+      {isLoadingFoods && <p>Carregando</p>}
+      {!isLoadingFoods && errorFoods && <p>Erro</p>}
+      {!isLoadingFoods && foods && listFoods}
+      {!isLoadingFoods && foods && listFoods.length === 0 && (
+        <p>Não há nenhuma postagem</p>
+      )}
+     
+    </div>
+  );
+};
 
 export default RestaurantPage;
