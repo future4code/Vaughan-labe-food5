@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 //import {useProtectedPage} from "../../hooks/useProtectedPage"
 import {GlobalStateContext} from "../../components/Global/GlobalStateContext";
 import { useContext } from "react";
-
+import Footer from '../../components/Footer/Footer'
 
 const RestaurantPage = () => {
   const { states, sets } = useContext(GlobalStateContext)
@@ -61,7 +61,7 @@ const onClickClose = () => sets.setOpenModal(false)
       {!isLoadingFoods && foods && listFoods.length === 0 && (
         <p>Não há nenhuma postagem</p>
       )}
-     
+     <Footer />
     </div>
   );
 };

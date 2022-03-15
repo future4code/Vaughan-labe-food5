@@ -29,10 +29,17 @@ export const CardText = styled.div`
  
 `;
 
-export const ColorTitle = styled.span`
-  color: #ff9500;
+export const ColorTxt = styled.span`
+  color: #8E8E93;
 `;
 
+export const IconBtn = styled.div`
+display:flex;
+align-self:flex-end
+
+`
 export const ButtonCnt = styled.div`
-  
-  `
+display:flex;
+align-self:flex-end
+
+`

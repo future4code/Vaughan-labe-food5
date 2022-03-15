@@ -9,7 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import {CtnMargin, CtnCloseBtn} from './styled';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
-import {GlobalStateContext} from "../Global/GlobalStateContext";
+//import {GlobalStateContext} from "../Global/GlobalStateContext";
 
 const quantities = [
     {
@@ -117,6 +117,9 @@ const ModalQuantityFood = (props) => {
           value={quantity}
           onChange={handleChange}
           fullWidth
+          id="outlined-select-currency-native"
+          variant="outlined"
+          color="#C7C7CC"
         >
           {quantities.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -125,8 +128,9 @@ const ModalQuantityFood = (props) => {
           ))}
         </TextField>
         </CtnMargin>
+        <CtnCloseBtn>
         <Button color="secondary" >Adicionar ao carrinho</Button>
-        
+        </CtnCloseBtn>
         </Box>
       </Modal>
     </div>
