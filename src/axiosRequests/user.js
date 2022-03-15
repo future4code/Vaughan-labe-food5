@@ -73,6 +73,28 @@ export const getProfile = (setProfile) => {
     })
 }
 
+// *************** AXIOS PARA ALTERARA PERFIL ***************** //
+
+export const handleProfile = (body, clear, navigate) => {
+  const headers = {
+    headers: {
+      auth: localStorage.getItem("token"),
+    }
+  }
+
+  axios
+    .put(`${BASE_URL}/profile`, body, headers)
+    .then((res) => {
+      alert("perfil alterado com sucesso");
+      console.log(res.data);
+      clear();
+    })
+    .catch((error) => {
+      alert("perfil deu erro");
+      console.log(error.response);
+    })
+}
+
 // *************** AXIOS PARA PEGAR RESTAURANTES ***************** //
 
 
@@ -107,6 +129,22 @@ export const getDetailRestaurant = (id, setRestaurant) => {
     //   console.log(res.data.restaurant);
     //   setRestaurant(res.data.restaurant);
     // })
+    .catch((err) => {
+      console.log(err.response);
+    })
+}
+
+// *************** AXIOS PARA PEGAR PEDIDOS ***************** //
+
+export const getOrderHistory = (setOrders) => {
+  const headers = {
+    headers: {
+      Auth: localStorage.getItem("token")
+    }
+  }
+  axios
+    .get(`${BASE_URL}/orders/history`, headers)
+    .then((response) => setOrders(response.data.orders))
     .catch((err) => {
       console.log(err.response);
     })
