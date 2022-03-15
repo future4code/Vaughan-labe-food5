@@ -24,19 +24,7 @@ const ProfilePage = () => {
   return (
     <>
     <PageContainer>
-        {/* <button onClick={() => handleLogin(
-            {
-                email: "astrodev@future4.com",
-                password: "123456"
-            },
-            () => {},
-            navigate
-        )}>
-            Login
-        </button> */}
-         <Title>
-            <h1>Meu perfil</h1>
-         </Title>
+        
          <Container>
              
             <RegisteredProfile>
