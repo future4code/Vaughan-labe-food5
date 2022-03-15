@@ -1,11 +1,12 @@
 import React from "react";
 import CardFood from "../../components/CardFood/CardFood";
+import ModalQuantityFood from "../../components/ModalQuantityFood/ModalQuantityFood";
 import { BASE_URL } from "../../constants/urls";
 import { useRequestData } from "../../hooks/useRequestData";
 
 const RestaurantPage = () => {
   const [foods, isLoadingFoods, errorFoods] = useRequestData(
-    `${BASE_URL}/restaurants/1`
+    `${BASE_URL}/restaurants/2`
   );
 
   console.log(
@@ -30,7 +31,7 @@ const RestaurantPage = () => {
   return (
     <div>
       <h1>Restaurantes</h1>
-
+<ModalQuantityFood/>
       {foods && foods.restaurant && (<div>
           
           <img src={foods.restaurant.logoUrl}/>
