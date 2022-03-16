@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CardFood from "../../components/CardFood/CardFood";
 import ModalQuantityFood from "../../components/ModalQuantityFood/ModalQuantityFood";
 import { BASE_URL } from "../../constants/urls";
@@ -12,6 +12,7 @@ import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 
 const RestaurantPage = () => {
   const [quantityProduct , setQuantityProduct] = useState(0)
+  const [productSelected, setProdutcSelected] = useState({})
   
   const { states, sets } = useContext(GlobalStateContext);
   const pathParams = useParams();
@@ -20,34 +21,31 @@ const RestaurantPage = () => {
   );
   // useProtectedPage();
 
+  useEffect(() => {
+    sets.setOpenModal(false)
+  }, [])
+
   const  onChangeQuantity = (event) => {
     setQuantityProduct(event.target.value)
   }
 
-  const AddProductToCart = () => {
+  const AddProductToCart = (prod) => {
+    setProdutcSelected(prod)
     sets.setOpenModal(true);
   };
 
   const addCart = (
-    productId,
-    productName,
-    productPrice,
-    productDescription,
-    productPhotoUrl, 
-    productCategory
+    product, quantity
+    
   ) => {
-    const foodItem = {
-      id: productId,
-      name:  productName,
-      price: productPrice,
-      description: productDescription,
-      photoUrl: productPhotoUrl,
-      category: productCategory,
-      quantity: Number(quantityProduct),
+    const foodItem = {...product, quantity:quantity,
+      
     }
 
-    sets.setCart(...states.cart, foodItem)
-    console.log("CARRINHO", states.cart)
+    const newCart = [...states.cart, foodItem]
+    console.log("foodITEM", foodItem)
+    sets.setCart(newCart)
+    
   };
 
  
@@ -58,15 +56,17 @@ const RestaurantPage = () => {
     foods.restaurant &&
     foods.restaurant.products.map(
       (product) => {
+        
         return (
           <CardFood
+            prodSelected={productSelected}
             product={product}
             key={product.id}
             restaurantId={pathParams.id}
             quantity={quantityProduct}
             addCart={addCart}
             onChangeQuantity={onChangeQuantity}
-            onClickAdd={AddProductToCart}
+            onClickAdd={() => AddProductToCart(product)}
           />
         );
       }

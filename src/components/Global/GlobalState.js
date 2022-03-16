@@ -9,6 +9,8 @@ export const GlobalState = (props) => {
   const [openModal, setOpenModal] = useState(false)
   const [cart, setCart] = useState([])
 
+  console.log("ESTADO GLOBAL CART", cart)
+
   useEffect(() => {
     pegarRestaurants();
   }, []);
@@ -16,9 +18,9 @@ export const GlobalState = (props) => {
     pegarProducts();
   }, [restaurants]);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-  }, [cart])
+  // }, [cart])
 
   const pegarProducts = () => {
     const newList = [];
