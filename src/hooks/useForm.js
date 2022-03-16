@@ -18,6 +18,23 @@ import { useState } from "react";
 
 export default useForm; 
 
+export const useInput = (initialState) => {
+
+  const [input, setForm] = useState(initialState)
+  
+  const onChangeInput = (event) => {
+    const { name, value } = event.target;
+    setForm({ ...input, [name]: value });
+  }
+
+  const clear = () => {
+    setForm(initialState);
+  }
+  
+  return { input, onChangeInput, clear };
+}
+
+
 
 
 export const useFormPerfil = (initialState) =>{

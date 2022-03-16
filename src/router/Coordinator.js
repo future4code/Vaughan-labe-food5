@@ -14,6 +14,10 @@ export const goToFeed = (navigate) => {
     navigate("/home")
 };
 
+export const goToSearch = (navigate) => {
+    navigate("/busca")
+};
+
 export const goToProfile = (navigate) => {
     navigate("/perfil")
 };

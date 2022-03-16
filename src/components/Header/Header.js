@@ -11,15 +11,14 @@ const HeaderContainer = styled.div`
     `;
 
 const Header = () => {
-const navigate = useNavigate();
 const location = useLocation();
 
 
-const switchFunction = (string) => {
-    if (string.includes('/restaurante')) {
-        return "Restaurante";
-    }
-};
+// const switchFunction = (string) => {
+//     if (string.includes('/restaurante')) {
+//         return "Restaurante";
+//     }
+// };
 
 
 const changeHeaderTitle = (location) => {
@@ -30,7 +29,7 @@ const changeHeaderTitle = (location) => {
     } else if (location.pathname.includes('/perfil')) {
         return "Meu perfil";
     } else if (location.pathname.includes('/home')) {
-        return "Home";
+        return "Rappi4";
     } else if (location.pathname.includes('/pedido')) {
         return "Pedido";
     } else if (location.pathname.includes('/pedidos')) {
