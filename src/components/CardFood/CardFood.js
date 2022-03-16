@@ -1,13 +1,16 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import Button from "@material-ui/core/Button";
 import Badge from "@material-ui/core/Badge";
 import Typography from "@material-ui/core/Typography";
 import { CardContainer, CardText, ColorTxt, ButtonCnt,IconBtn } from "./styled";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ModalQuantityFood from "../ModalQuantityFood/ModalQuantityFood";
+import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 
-const CardFood = ({product, quantity, addCart,onChangeQuantity, onClickAdd }) => {
-
+const CardFood = ({prodSelected, product, quantity, addCart,onChangeQuantity, onClickAdd }) => {
+  const { states, sets } = useContext(GlobalStateContext);
+  
+console.log("produto selecionado", prodSelected)
   return (
     <div>
     <CardContainer>
@@ -40,12 +43,14 @@ const CardFood = ({product, quantity, addCart,onChangeQuantity, onClickAdd }) =>
           </Button>
         </ButtonCnt>
       </CardText>
-      <ModalQuantityFood 
+      {(prodSelected && prodSelected.id && states.openModal ) && ( <ModalQuantityFood 
+      
       quantity={quantity}
       onChangeQuantity={onChangeQuantity}
-      product={product}
+      product={prodSelected}
       addCart={addCart} 
-      />
+      />)}
+     
     </CardContainer>
     </div>
   );

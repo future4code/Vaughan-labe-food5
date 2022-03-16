@@ -70,24 +70,24 @@ const ModalQuantityFood = ({
 }) => {
   const { states, sets } = useContext(GlobalStateContext);
   
+console.log("ADDCART", addCart)
+
   // const handleChange = (event) => {
   //     setQuantity(event.target.value);
   //   };
 const onCloseModal = () => {
   sets.setOpenModal(false)
 }
+
+console.log("produto fora da função", product)
+
   const addToCart = () => {
   sets.setOpenModal(false)
 
     addCart(
-      product.id,
-      product.name,
-      product.price,
-      product.description,
-      product.photoUrl, 
-      product.category
-    );
-
+      product, quantity
+    )
+console.log("CLICOU ADICIONAR CARRINHO", states.cart)
   };
 
   const style = {
@@ -147,7 +147,7 @@ const onCloseModal = () => {
             </TextField>
           </CtnMargin>
           <CtnCloseBtn>
-            <Button color="secondary" onClick={addToCart}>
+            <Button color="secondary" onClick={() => addCart(product, quantity)}>
               Adicionar ao carrinho
             </Button>
           </CtnCloseBtn>
