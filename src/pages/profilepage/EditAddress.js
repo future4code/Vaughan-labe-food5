@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import TextFieldStyled from "@material-ui/core/TextField";
 import {useFormPerfil} from "../../hooks/useForm";
 import back from "../../assets/back.svg";
 import { useNavigate } from "react-router-dom";
-import { Title, SaveEditProfile, EditAddressContainer } from './styled';
+import {  SaveEditProfile, EditAddressContainer } from './styled';
 import { handleAdress } from "../../axiosRequests/user";
 import Footer from "../../components/Footer/Footer";
 
