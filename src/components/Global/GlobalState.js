@@ -6,7 +6,7 @@ import axios from "axios";
 export const GlobalState = (props) => {
   const [restaurants, setRestaurants] = useState([]);
   const [products, setProducts] = useState([]);
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
     pegarRestaurants();
   }, []);
@@ -52,19 +52,12 @@ export const GlobalState = (props) => {
         ]);
       });
   };
-  
-  // const data = {
-  //   restaurants,
-  //   setRestaurants,
-  //   products,
-  //   setProducts,
-  // };
 
-  const states = {openModal, products, restaurants}
-  const sets = {setOpenModal, setProducts, setRestaurants}
+  const states = { openModal, products, restaurants };
+  const sets = { setOpenModal, setProducts, setRestaurants };
 
   return (
-    <GlobalStateContext.Provider value={{ states, sets}}>
+    <GlobalStateContext.Provider value={{ states, sets }}>
       {props.children}
     </GlobalStateContext.Provider>
   );

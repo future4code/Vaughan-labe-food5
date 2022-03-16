@@ -14,17 +14,19 @@ const FeedThumbnail = ({
 }) => {
   return (
     <ConteinerThumb key={id} onClick={onClickRestaurant}>
-      <ImgContainer>
+      {/* <ImgContainer> */}
       <IMG src={image} alt={name} />
-      </ImgContainer>
+      {/* </ImgContainer> */}
       
         <RestaurantContainer>
         <p>{name}</p>
+        <Foot>
           <small>
             {deliveryTime - 10}-{deliveryTime} min
           </small>
           <br />
           <small>Frete R${shipping},00</small>
+          </Foot>
         </RestaurantContainer>
       
     </ConteinerThumb>
