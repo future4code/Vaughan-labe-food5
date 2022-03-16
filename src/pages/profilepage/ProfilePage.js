@@ -20,6 +20,16 @@ const ProfilePage = () => {
     getOrderHistory(setOrderHistory);
   }, []);
 
+  const formatDateToLocalDate = (date) => {
+    const dateUTC = new Date(date);
+    return dateUTC.toLocaleDateString();
+  };
+
+  const formatDateToLocalTime = (date) => {
+    const dateUTC = new Date(date);
+    return dateUTC.toLocaleTimeString();
+  };
+
  
   return (
     <>
@@ -51,7 +61,7 @@ const ProfilePage = () => {
         {orderHistory.map(order => (
             <OrderHistoryContainer>
                 <p>{order.restaurantName}</p>
-                <span>{order.createdAt}</span>
+                <span>{formatDateToLocalDate(order.createdAt)}, {formatDateToLocalTime(order.createdAt)}</span>
                 <h4>R$ {order.totalPrice}</h4>
             
             </OrderHistoryContainer>
