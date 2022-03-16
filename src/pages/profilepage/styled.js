@@ -52,12 +52,11 @@ export const RegisteredProfile = styled.div`
   `;
 
   export const SaveEditProfile = styled.button`
-    width: 328px;
-    height: 56px;
-    margin: 8px 0 0;
-    padding: 19px 48px 19px 16px;
+    width: 100%;
+    padding: 15px;
     border-radius: 4px;
     border: solid 1px var(--greyish);
+    background-color: #E86E5A;
   `;
 
   export const OrderHistoryContainer = styled.div`
@@ -77,4 +76,22 @@ export const RegisteredProfile = styled.div`
     color: #E86E5A;
   }
   `;
+
+  export const EditProfileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  gap: 10px;
+  margin: 10px;
+  /* align-items: center; */
+  `;
+
+export const EditAddressContainer = styled.div`
+display: flex;
+flex-direction: column;
+width: 95%;
+gap: 10px;
+margin: 10px;
+/* align-items: center; */
+`;
   

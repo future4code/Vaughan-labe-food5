@@ -54,19 +54,12 @@ export const GlobalState = (props) => {
         ]);
       });
   };
-  
-  // const data = {
-  //   restaurants,
-  //   setRestaurants,
-  //   products,
-  //   setProducts,
-  // };
 
   const states = {openModal, products, restaurants, cart}
   const sets = {setOpenModal, setProducts, setRestaurants, setCart}
 
   return (
-    <GlobalStateContext.Provider value={{ states, sets}}>
+    <GlobalStateContext.Provider value={{ states, sets }}>
       {props.children}
     </GlobalStateContext.Provider>
   );

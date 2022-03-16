@@ -89,10 +89,10 @@ console.log(states.cart)
     width: 300,
     bgcolor: "white",
     borderRadius: "5px",
-    boxShadow: 24,
-    boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
     p: 4,
     textAlign:'center',
+      background: 'rgba(0, 0, 0, 0.8)'
+
   };
 
 
@@ -104,6 +104,7 @@ console.log(states.cart)
         onClose={props.onClickClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        BackdropProps={{ style: { background: "rgba(0, 0, 0, 0.4)", opacity: "0.2" } }} 
       >
         <Box sx={style}>
             <CtnCloseBtn>
@@ -136,7 +137,7 @@ console.log(states.cart)
         </TextField>
         </CtnMargin>
         <CtnCloseBtn>
-        <Button color="secondary" onClick={addToCart}>Adicionar ao carrinho</Button>
+        <Button color="secondary" onCLick={props.addToCart}>Adicionar ao carrinho</Button>
         </CtnCloseBtn>
         </Box>
       </Modal>

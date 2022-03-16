@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import TextFieldStyled from "@material-ui/core/TextField";
-import useForm from "../../hooks/useForm";
+import {useFormPerfil} from "../../hooks/useForm";
 import back from "../../assets/back.svg";
 import { useNavigate } from "react-router-dom";
-import { Title, Container, RegisteredProfile, EditContainer, SaveEditProfile } from './styled';
+import { Title, SaveEditProfile, EditAddressContainer } from './styled';
 import { handleAdress } from "../../axiosRequests/user";
 import Footer from "../../components/Footer/Footer";
 
 const EditAddress = () => {
   const navigate= useNavigate();
-  const [form, onChange, clear] = useForm({ street: "", number: "", neighbourhood: "", city: "", state: "", apartment: ""});
+  const [form, onChange, clear] = useFormPerfil({ street: "", number: "", neighbourhood: "", city: "", state: "", apartment: ""});
 
   const handleSubmission = (event) => {
     event.preventDefault();
@@ -24,10 +24,7 @@ const EditAddress = () => {
     <>
       <img src={back} onClick={goBack} />
 
-      <Title>
-      <h1>Editar Endereço</h1>
-      </Title>
-
+        <EditAddressContainer>
       <TextFieldStyled
         onSubmit={handleSubmission}
         name="street"
@@ -80,6 +77,7 @@ const EditAddress = () => {
       <SaveEditProfile
       onClick={handleSubmission}>SALVAR
       </SaveEditProfile>
+        </EditAddressContainer>
       <Footer />
     </>
   );

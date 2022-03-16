@@ -1,5 +1,5 @@
 import React from "react";
-import { Foot, ConteinerThumb, IMG } from "./styled";
+import { Foot, ConteinerThumb, IMG, RestaurantContainer, ImgContainer } from "./styled";
 
 const FeedThumbnail = ({
   address,
@@ -14,17 +14,21 @@ const FeedThumbnail = ({
 }) => {
   return (
     <ConteinerThumb key={id} onClick={onClickRestaurant}>
+      {/* <ImgContainer> */}
       <IMG src={image} alt={name} />
-      <div>
-        <h3>{name}</h3>
-        <div>
+      {/* </ImgContainer> */}
+      
+        <RestaurantContainer>
+        <p>{name}</p>
+        <Foot>
           <small>
             {deliveryTime - 10}-{deliveryTime} min
           </small>
           <br />
           <small>Frete R${shipping},00</small>
-        </div>
-      </div>
+          </Foot>
+        </RestaurantContainer>
+      
     </ConteinerThumb>
   );
 };

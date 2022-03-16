@@ -4,9 +4,12 @@ import Badge from "@material-ui/core/Badge";
 import Typography from "@material-ui/core/Typography";
 import { CardContainer, CardText, ColorTxt, ButtonCnt,IconBtn } from "./styled";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import ModalQuantityFood from "../ModalQuantityFood/ModalQuantityFood";
 
 const CardFood = (props) => {
+
   return (
+    <div>
     <CardContainer>
       
       <img src={props.image} alt={props.title} />
@@ -29,7 +32,7 @@ const CardFood = (props) => {
         <Typography variant="h6">R$: {props.price}</Typography>
         <ButtonCnt>
           <Button
-            onClick={props.onClickAddProduct}
+            onClick={props.onClickAdd}
             color="primary"
             variant="outlined"
           >
@@ -37,7 +40,9 @@ const CardFood = (props) => {
           </Button>
         </ButtonCnt>
       </CardText>
+      <ModalQuantityFood value={props.value}  addCart={props.addCart} onClickClose={props.onClickClose} />
     </CardContainer>
+    </div>
   );
 };
 

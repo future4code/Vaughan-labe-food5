@@ -13,35 +13,54 @@ import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 const RestaurantPage = () => {
   const { states, sets } = useContext(GlobalStateContext);
   const pathParams = useParams();
-  console.log("pathParamsn", pathParams);
   const [foods, isLoadingFoods, errorFoods] = useRequestData(
     `${BASE_URL}/restaurants/${pathParams.id}`
   );
   // useProtectedPage();
 
-  const AddProductToCart = (id) => {
+  const AddProductToCart = () => {
     sets.setOpenModal(true);
-    console.log("ID",id)
   };
 
+  const addCart = (
+    idProduct,
+    nameProduct,
+    photoUrlProduct,
+    descriptionProduct,
+    priceProduct
+  ) => {
+    console.log(
+      "addCartFunction",
+      idProduct,
+      nameProduct,
+      photoUrlProduct,
+      descriptionProduct,
+      priceProduct
+    );
+  };
 
   const onClickClose = () => sets.setOpenModal(false);
 
   const listFoods =
     foods &&
     foods.restaurant &&
-    foods.restaurant.products.map((food) => {
-      return (
-        <CardFood
-          key={food.id}
-          title={food.name}
-          image={food.photoUrl}
-          description={food.description}
-          price={food.price}
-          onClickAddProduct={() => AddProductToCart(food.id)}
-        />
-      );
-    });
+    foods.restaurant.products.map(
+      ({ id, name, photoUrl, description, price }) => {
+        return (
+            <CardFood
+              key={id}
+              title={name}
+              image={photoUrl}
+              description={description}
+              price={price}
+              onClickAdd={AddProductToCart}
+
+              value={states.openModal}
+              onClickClose={onClickClose}
+            />
+        );
+      }
+    );
   return (
     <div>
       <h1>Restaurantes</h1>

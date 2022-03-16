@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Conteiner } from "./styled";
+import { Conteiner, RestaurantContainer } from "./styled";
 import FeedThumbnail from "./FeedThumbnail";
 import { GlobalStateContext } from "../Global/GlobalStateContext";
 
@@ -14,6 +14,7 @@ const FeedCard = (props) => {
 
   return (
     <Conteiner>
+      
       {props && (
         <FeedThumbnail
           onClickRestaurant={props.onClickRestaurant}
