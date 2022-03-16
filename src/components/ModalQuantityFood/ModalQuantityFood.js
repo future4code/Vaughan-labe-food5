@@ -82,6 +82,7 @@ const onCloseModal = () => {
   const addToCart = () => {
   sets.setOpenModal(false)
 
+
     addCart(
       product.id,
       product.name,
@@ -91,7 +92,8 @@ const onCloseModal = () => {
       product.category
     );
 
-  console.log("TESTE ADD TO CART")
+
+  console.log("TESTEE ADD TO CART")
 
   };
 
