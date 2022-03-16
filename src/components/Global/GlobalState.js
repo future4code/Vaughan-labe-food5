@@ -16,6 +16,10 @@ export const GlobalState = (props) => {
     pegarProducts();
   }, [restaurants]);
 
+  useEffect(() => {
+
+  }, [cart])
+
   const pegarProducts = () => {
     const newList = [];
     restaurants.forEach((p) => {

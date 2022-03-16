@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CardFood from "../../components/CardFood/CardFood";
 import ModalQuantityFood from "../../components/ModalQuantityFood/ModalQuantityFood";
 import { BASE_URL } from "../../constants/urls";
@@ -11,6 +11,8 @@ import Footer from "../../components/Footer/Footer";
 import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 
 const RestaurantPage = () => {
+  const [quantityProduct , setQuantityProduct] = useState(0)
+  
   const { states, sets } = useContext(GlobalStateContext);
   const pathParams = useParams();
   const [foods, isLoadingFoods, errorFoods] = useRequestData(
@@ -18,46 +20,54 @@ const RestaurantPage = () => {
   );
   // useProtectedPage();
 
+  const  onChangeQuantity = (event) => {
+    setQuantityProduct(event.target.value)
+  }
+
   const AddProductToCart = () => {
     sets.setOpenModal(true);
   };
 
   const addCart = (
-    idProduct,
-    nameProduct,
-    photoUrlProduct,
-    descriptionProduct,
-    priceProduct
+    productId,
+    productName,
+    productPrice,
+    productDescription,
+    productPhotoUrl, 
+    productCategory
   ) => {
-    console.log(
-      "addCartFunction",
-      idProduct,
-      nameProduct,
-      photoUrlProduct,
-      descriptionProduct,
-      priceProduct
-    );
+    const foodItem = {
+      id: productId,
+      name:  productName,
+      price: productPrice,
+      description: productDescription,
+      photoUrl: productPhotoUrl,
+      category: productCategory,
+      quantity: Number(quantityProduct),
+    }
+
+    sets.setCart(...states.cart, foodItem)
+    console.log("CARRINHO", states.cart)
   };
 
-  const onClickClose = () => sets.setOpenModal(false);
+ 
+
 
   const listFoods =
     foods &&
     foods.restaurant &&
     foods.restaurant.products.map(
-      ({ id, name, photoUrl, description, price }) => {
+      (product) => {
         return (
-            <CardFood
-              key={id}
-              title={name}
-              image={photoUrl}
-              description={description}
-              price={price}
-              onClickAdd={AddProductToCart}
-
-              value={states.openModal}
-              onClickClose={onClickClose}
-            />
+          <CardFood
+            product={product}
+            key={product.id}
+            restaurantId={pathParams.id}
+            quantity={quantityProduct}
+            addCart={addCart}
+            onChangeQuantity={onChangeQuantity}
+            onClickAdd={AddProductToCart}
+          />
         );
       }
     );
@@ -65,17 +75,16 @@ const RestaurantPage = () => {
     <div>
       <h1>Restaurantes</h1>
 
-      <ModalQuantityFood value={states.openModal} onClickClose={onClickClose}    />
 
       {foods && foods.restaurant && (
-          <CardRestaurant
-            image={foods.restaurant.logoUrl}
-            title={foods.restaurant.name}
-            category={foods.restaurant.category}
-            time={foods.restaurant.deliveryTime}
-            shipping={foods.restaurant.shipping}
-            address={foods.restaurant.address}
-          />
+        <CardRestaurant
+          image={foods.restaurant.logoUrl}
+          title={foods.restaurant.name}
+          category={foods.restaurant.category}
+          time={foods.restaurant.deliveryTime}
+          shipping={foods.restaurant.shipping}
+          address={foods.restaurant.address}
+        />
       )}
 
       {isLoadingFoods && <p>Carregando</p>}

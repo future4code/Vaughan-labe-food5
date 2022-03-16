@@ -6,33 +6,33 @@ import { CardContainer, CardText, ColorTxt, ButtonCnt,IconBtn } from "./styled";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ModalQuantityFood from "../ModalQuantityFood/ModalQuantityFood";
 
-const CardFood = (props) => {
+const CardFood = ({product, quantity, addCart,onChangeQuantity, onClickAdd }) => {
 
   return (
     <div>
     <CardContainer>
       
-      <img src={props.image} alt={props.title} />
+      <img src={product.photoUrl} alt={product.name} />
 
       <CardText>
         <IconBtn>
-          <Badge  color="primary" badgeContent={6} showZero>
+          <Badge  color="primary" badgeContent={quantity} showZero>
             <ShoppingCartIcon color="secondary"/>
           </Badge>
         </IconBtn>
 
         <Typography color="primary" variant="h5">
-          {props.title}
+          {product.name}
         </Typography>
         <ColorTxt>
           <Typography variant="subtitle1" color="text.secondary">
-            {props.description}
+            {product.description}
           </Typography>
         </ColorTxt>
-        <Typography variant="h6">R$: {props.price}</Typography>
+        <Typography variant="h6">R$: {product.price}</Typography>
         <ButtonCnt>
           <Button
-            onClick={props.onClickAdd}
+            onClick={onClickAdd}
             color="primary"
             variant="outlined"
           >
@@ -40,7 +40,12 @@ const CardFood = (props) => {
           </Button>
         </ButtonCnt>
       </CardText>
-      <ModalQuantityFood value={props.value}  addCart={props.addCart} onClickClose={props.onClickClose} />
+      <ModalQuantityFood 
+      quantity={quantity}
+      onChangeQuantity={onChangeQuantity}
+      product={product}
+      addCart={addCart} 
+      />
     </CardContainer>
     </div>
   );
