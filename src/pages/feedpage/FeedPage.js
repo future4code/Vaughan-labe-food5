@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import FeedCard from "../../components/FeedCard/FeedCard";
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { PageContainer } from "./styled";
-import SearchPage from "../searchPage/SearchPage";
+import { TextField } from "@material-ui/core";
 
 const FeedPage = () => {
   const { states } = useContext(GlobalStateContext);
@@ -19,7 +19,8 @@ const FeedPage = () => {
   return (
     <div>
       <PageContainer>
-        <input
+        <TextField
+          variant="outlined"
           onClick={() => goToSearch(navigate)}
           placeholder={"  Restaurante"}
         />

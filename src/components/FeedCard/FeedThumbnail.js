@@ -2,10 +2,7 @@ import React from "react";
 import { Foot, ConteinerThumb, IMG, RestaurantContainer, ImgContainer } from "./styled";
 
 const FeedThumbnail = ({
-  address,
-  category,
   deliveryTime,
-  description,
   id,
   image,
   name,
@@ -19,7 +16,7 @@ const FeedThumbnail = ({
       {/* </ImgContainer> */}
       
         <RestaurantContainer>
-        <p>{name}</p>
+        <strong>{name}</strong>
         <Foot>
           <small>
             {deliveryTime - 10}-{deliveryTime} min
