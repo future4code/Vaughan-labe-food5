@@ -1,12 +1,15 @@
 import React from "react";
 // import { Box } from '@material-ui/core'
 import TextFieldStyled from "@material-ui/core/TextField";
-import { Button } from "@material-ui/core";
 import axios from "axios";
 import { BASE_URL } from "../../constants/urls";
 import { useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import { goToFeed } from "../../router/Coordinator";
+import { useState } from "react";
+import Logo from "../../assets/logo/logoLogin.svg"
+import { BotaoContainer, EntrarPageContainer, ContainerCentral, ContainerPagina } from "./styled";
+
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -51,7 +54,19 @@ const SignupPage = () => {
 
 
   return (
-    <form onSubmit={onSubmitSignUp}>
+    <ContainerPagina>
+      <ContainerCentral>
+      <img src={Logo}/>
+      </ContainerCentral>
+      <ContainerCentral>
+      <BotaoContainer>
+<ContainerCentral>
+  <h3>Cadastro</h3>
+</ContainerCentral>
+
+
+
+     
       <TextFieldStyled
         name={"name"}
         id="outlined-basic"
@@ -92,7 +107,7 @@ const SignupPage = () => {
 
         <TextFieldStyled
         id="outlined-basic" 
-        label="Senha" 
+        label="Confirmar senha" 
         variant="outlined"
         type="password"
         placeholder="senha"
@@ -101,11 +116,18 @@ const SignupPage = () => {
         onChange={handlePassword}
         
         />
+        
 
       {/* <TextField id="outlined-basic" label="Confirmar Senha" variant="outlined" value={Confirmpassword} onChange={onChangePassword}/> */}
 
-      <Button type="submit">Fazer Cadastro</Button>
-    </form>
+      <EntrarPageContainer onClick={onSubmitSignUp}>Fazer Cadastro</EntrarPageContainer>
+    
+    </BotaoContainer>
+    </ContainerCentral>
+    
+    
+   
+    </ContainerPagina>
   );
 };
 
