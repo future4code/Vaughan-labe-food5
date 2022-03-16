@@ -28,14 +28,13 @@ export const RegisteredProfile = styled.div`
   justify-content: center;
   margin-top: 10px;
   width: 100%;
-  /* border-bottom: 1px solid green; */
+  padding: 10px;
   `;
 
   export const EditContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  /* border-bottom: 1px solid red; */
   margin-top: 5%;
   margin-right: 5%;
   `;

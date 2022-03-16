@@ -1,25 +1,36 @@
 import React from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from 'styled-components';
+import back from "../../assets/back.svg";
 
 const HeaderContainer = styled.div`
     display: flex;
+    justify-content: space-between;
+    `;
+
+const HeaderContainerBack = styled.div`
+display: flex;
     justify-content: center;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid #E5E5EA;
     `;
 
+const HeaderContainerTitle = styled.div`
+display: flex;
+`;
+
+const DivFantasma = styled.div`
+width: 10px;
+`;
+
+
 const Header = () => {
+const navigate= useNavigate();
 const location = useLocation();
 
-
-// const switchFunction = (string) => {
-//     if (string.includes('/restaurante')) {
-//         return "Restaurante";
-//     }
-// };
-
+const goBack = () => {
+    navigate(-1);
+  };
 
 const changeHeaderTitle = (location) => {
     if (location.pathname.includes('/restaurante')) {
@@ -29,7 +40,7 @@ const changeHeaderTitle = (location) => {
     } else if (location.pathname.includes('/perfil')) {
         return "Meu perfil";
     } else if (location.pathname.includes('/home')) {
-        return "Rappi4";
+        return "Home";
     } else if (location.pathname.includes('/pedido')) {
         return "Pedido";
     } else if (location.pathname.includes('/pedidos')) {
@@ -46,6 +57,8 @@ const changeHeaderTitle = (location) => {
         return "Editar Endereço";
     } else if (location.pathname.includes('/endereco')) {
         return "Meu endereço";
+    }   else if (location.pathname.includes('/busca')) {
+            return "Busca";
     } else {
         return "Rappi4";
     }
@@ -53,34 +66,19 @@ const changeHeaderTitle = (location) => {
 
 };
     
-//     switch (location.pathname) {
-//         case "/home":
-//             return "Home";
-//         case "/carrinho":
-//             return "Carrinho";
-//         case "/perfil":
-//             return "Meu perfil";
-//         case "/pedidoemandamento":
-//             return "Pedido em andamento";
-//         case "/restaurantes":
-//             return "Restaurantes";
-//         case "/editarPerfil":
-//             return "Editar Perfil";
-//         case "/editarEndereco":
-//             return "Editar Endereço";
-//         case "/endereco":
-//             return "Meu endereço";
-//         default:
-//             return "Rappi4";
-//     }
-// };
-        
-
 
 
     return (
         <HeaderContainer>
+
+        <HeaderContainerBack>
+        <img src={back} onClick={goBack} />
+        </HeaderContainerBack>
+        <HeaderContainerTitle>
             <h4>{changeHeaderTitle(location)}</h4>
+        </HeaderContainerTitle>
+        <DivFantasma />
+
         </HeaderContainer>
       );
 }
