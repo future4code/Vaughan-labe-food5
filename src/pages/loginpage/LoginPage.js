@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../constants/urls";
-import { TextField } from '@material-ui/core'
+import { BotaoContainer, EntrarPageContainer, ContainerCentral, ContainerPagina } from "./styled";
+import TextFieldStyled from "@material-ui/core/TextField";
+import Logo from "../../assets/logo/logoLogin.svg"
 
 
 
@@ -10,6 +12,7 @@ const LoginPage = () => {
     const history = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    
 
     const onChangeEmail = (event) => {
         setEmail(event.target.value)
@@ -29,7 +32,7 @@ const LoginPage = () => {
         .then((response) => {
         console.log('Deu certo:',response.data.token)
         localStorage.setItem('token',response.data.token)
-            history('/login')
+            history('/home')
 
         })
         .catch((error) => {
@@ -37,34 +40,47 @@ const LoginPage = () => {
         })
     }   
 
-   
 
-
+    
     return (
-        <div>
-            <h1>Entrar</h1>
+        <ContainerPagina>
+        <ContainerCentral> <img src={Logo} /> </ContainerCentral>
+        <BotaoContainer>
+
+        <ContainerCentral><h3>Entrar</h3> </ContainerCentral> 
             
             
-        <TextField id="outlined-basic" label="E-mail" variant="outlined" 
-        
+        <TextFieldStyled 
+        id="outlined-basic" 
+        label="E-mail" 
+        variant="outlined" 
         placeholder="email"
         type="email"
         value={email}
         onChange={onChangeEmail}          
                         
         />
-        <TextField id="outlined-basic" label="E-mail" variant="outlined"
-
+        <TextFieldStyled
+        id="outlined-basic" 
+        label="Senha" 
+        variant="outlined"
         placeholder="senha"
-        type="password"
         value={password}
+        type="password"
         onChange={onChangePassword}
         
         />
         
-            <button onClick={onSubmitLogin}>Entrar</button>
-            <p>Não possui cadastro? Clique aqui.</p>
-        </div>
+        <EntrarPageContainer onClick={onSubmitLogin}> <strong> Entrar </strong></EntrarPageContainer>
+        <ContainerCentral> 
+        <h4> Não possui cadastro? Clique <span onClick={() =>
+         history('/cadastro')
+        }> aqui.</span> 
+        </h4>
+        </ContainerCentral>
+
+        </BotaoContainer>
+        </ContainerPagina>
     )
 }
 
