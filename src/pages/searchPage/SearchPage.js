@@ -5,6 +5,7 @@ import Footer from "../../components/Footer/Footer";
 import { PageContainer } from "./styled";
 import { useInput } from "../../hooks/useForm";
 import FeedCard from "../../components/FeedCard/FeedCard";
+import { TextField } from "@material-ui/core";
 
 const SearchPage = () => {
   const { states } = useContext(GlobalStateContext);
@@ -47,19 +48,21 @@ const SearchPage = () => {
   return (
     <div>
       <PageContainer>
-        <input
-          placeholder={"  Restaurante"}
+        <TextField
+          variant="outlined"
+          placeholder={"  Restaurantes"}
           type="text"
           onChange={onChangeInput}
           value={input.search}
           name={"search"}
         />
-
+        <div>
         {renderRestaurants ? (
           renderRestaurants
         ) : (
           <p>busque por nome de restaurante</p>
         )}
+        </div>
       </PageContainer>
       <Footer />
     </div>
