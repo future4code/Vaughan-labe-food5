@@ -101,7 +101,7 @@ const SignupPage = () => {
             value={form.password}
             onChange={onChangeForm}
             required
-            InputProps={{ 
+            InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
@@ -112,7 +112,7 @@ const SignupPage = () => {
                     {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
-              )
+              ),
             }}
           />
 
@@ -124,7 +124,7 @@ const SignupPage = () => {
             placeholder="senha"
             value={passwordConfirm}
             onChange={handlePassword}
-            InputProps={{ 
+            InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
@@ -135,7 +135,7 @@ const SignupPage = () => {
                     {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
-              )
+              ),
             }}
           />
 

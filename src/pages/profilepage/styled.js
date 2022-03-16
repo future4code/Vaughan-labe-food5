@@ -35,7 +35,7 @@ export const RegisteredProfile = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: 5%;
+  margin-top: 7%;
   margin-right: 5%;
   `;
 
@@ -58,6 +58,10 @@ export const RegisteredProfile = styled.div`
     background-color: #E86E5A;
   `;
 
+  export const OrderHistoryTitleContainer = styled.div`
+  padding : 10px;
+  `;
+
   export const OrderHistoryContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -73,6 +77,10 @@ export const RegisteredProfile = styled.div`
   
   p{
     color: #E86E5A;
+  }
+
+  strong{
+    font-size: 0.8em;
   }
   `;
 
