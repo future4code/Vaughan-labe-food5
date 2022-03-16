@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import { useContext } from "react";
 import Footer from "../../components/Footer/Footer";
+import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 
 const RestaurantPage = () => {
   const { states, sets } = useContext(GlobalStateContext);
@@ -64,17 +65,17 @@ const RestaurantPage = () => {
     <div>
       <h1>Restaurantes</h1>
 
+      <ModalQuantityFood value={states.openModal} onClickClose={onClickClose}    />
+
       {foods && foods.restaurant && (
-        <div>
-          <img src={foods.restaurant.logoUrl} style={{ width: "180px" }} />
-          <h1>{foods.restaurant.name}</h1>
-          <p>{foods.restaurant.category}</p>
-          <p>
-            {foods.restaurant.deliveryTime} min Frete R${" "}
-            {foods.restaurant.shipping}
-          </p>
-          <p>{foods.restaurant.address}</p>
-        </div>
+          <CardRestaurant
+            image={foods.restaurant.logoUrl}
+            title={foods.restaurant.name}
+            category={foods.restaurant.category}
+            time={foods.restaurant.deliveryTime}
+            shipping={foods.restaurant.shipping}
+            address={foods.restaurant.address}
+          />
       )}
 
       {isLoadingFoods && <p>Carregando</p>}

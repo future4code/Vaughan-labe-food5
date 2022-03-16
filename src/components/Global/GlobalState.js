@@ -6,7 +6,9 @@ import axios from "axios";
 export const GlobalState = (props) => {
   const [restaurants, setRestaurants] = useState([]);
   const [products, setProducts] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false)
+  const [cart, setCart] = useState([])
+
   useEffect(() => {
     pegarRestaurants();
   }, []);
@@ -53,8 +55,8 @@ export const GlobalState = (props) => {
       });
   };
 
-  const states = { openModal, products, restaurants };
-  const sets = { setOpenModal, setProducts, setRestaurants };
+  const states = {openModal, products, restaurants, cart}
+  const sets = {setOpenModal, setProducts, setRestaurants, setCart}
 
   return (
     <GlobalStateContext.Provider value={{ states, sets }}>

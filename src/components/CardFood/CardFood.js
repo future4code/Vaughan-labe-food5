@@ -11,6 +11,7 @@ const CardFood = (props) => {
   return (
     <div>
     <CardContainer>
+      
       <img src={props.image} alt={props.title} />
 
       <CardText>
