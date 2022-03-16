@@ -9,7 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import {CtnMargin, CtnCloseBtn} from './styled';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
-//import {GlobalStateContext} from "../Global/GlobalStateContext";
+import {GlobalStateContext} from "../Global/GlobalStateContext";
 
 const quantities = [
     {
@@ -64,15 +64,22 @@ const quantities = [
 
 
 const ModalQuantityFood = (props) => {
-  //   const { states, sets } = useContext(GlobalStateContext)
-    const [quantity, setQuantity] = useState(null)
-  //  // const [open, setOpen] = useState(false);
-  //   const handleOpen = () => sets.setOpenModal(true);
-  //   const handleClose = () => sets.setOpenModal(false);
+     const { states, sets } = useContext(GlobalStateContext)
+    const [quantity, setQuantity] = useState("")
+    console.log(states.cart)
 
     const handleChange = (event) => {
         setQuantity(event.target.value);
       };
+
+    const addToCart = () =>{
+    sets.setCart(...states.cart, {
+      quantidade: Number(quantity),
+    })
+    setQuantity("")
+  
+console.log(states.cart)
+    }
 
   const style = {
     position: "absolute",
@@ -92,7 +99,6 @@ const ModalQuantityFood = (props) => {
 
   return (
     <div>
-      <Button onClick={props.onClickOpen}>Open modal</Button>
       <Modal
         open={props.value}
         onClose={props.onClickClose}
@@ -120,6 +126,7 @@ const ModalQuantityFood = (props) => {
           id="outlined-select-currency-native"
           variant="outlined"
           color="#C7C7CC"
+          required
         >
           {quantities.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -129,7 +136,7 @@ const ModalQuantityFood = (props) => {
         </TextField>
         </CtnMargin>
         <CtnCloseBtn>
-        <Button color="secondary" >Adicionar ao carrinho</Button>
+        <Button color="secondary" onClick={addToCart}>Adicionar ao carrinho</Button>
         </CtnCloseBtn>
         </Box>
       </Modal>

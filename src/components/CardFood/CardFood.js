@@ -8,6 +8,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 const CardFood = (props) => {
   return (
     <CardContainer>
+      
       <img src={props.image} alt={props.title} />
 
       <CardText>
