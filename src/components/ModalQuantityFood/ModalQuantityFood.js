@@ -70,9 +70,6 @@ const ModalQuantityFood = ({
 }) => {
   const { states, sets } = useContext(GlobalStateContext);
   
-
-  console.log("addcart função",addCart);
-
   // const handleChange = (event) => {
   //     setQuantity(event.target.value);
   //   };
@@ -82,7 +79,6 @@ const onCloseModal = () => {
   const addToCart = () => {
   sets.setOpenModal(false)
 
-
     addCart(
       product.id,
       product.name,
@@ -91,9 +87,6 @@ const onCloseModal = () => {
       product.photoUrl, 
       product.category
     );
-
-
-  console.log("TESTEE ADD TO CART")
 
   };
 
@@ -144,7 +137,6 @@ const onCloseModal = () => {
               fullWidth
               id="outlined-select-currency-native"
               variant="outlined"
-              color="#C7C7CC"
               required
             >
               {quantities.map((option) => (
@@ -155,7 +147,7 @@ const onCloseModal = () => {
             </TextField>
           </CtnMargin>
           <CtnCloseBtn>
-            <Button color="secondary" onCLick={addToCart}>
+            <Button color="secondary" onClick={addToCart}>
               Adicionar ao carrinho
             </Button>
           </CtnCloseBtn>

@@ -12,7 +12,7 @@ import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 
 const RestaurantPage = () => {
   const [quantityProduct , setQuantityProduct] = useState(0)
-
+  
   const { states, sets } = useContext(GlobalStateContext);
   const pathParams = useParams();
   const [foods, isLoadingFoods, errorFoods] = useRequestData(
@@ -47,10 +47,10 @@ const RestaurantPage = () => {
     }
 
     sets.setCart(...states.cart, foodItem)
-    console.log(states.cart)
+    console.log("CARRINHO", states.cart)
   };
 
-  console.log(states.cart)
+ 
 
 
   const listFoods =
