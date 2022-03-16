@@ -42,7 +42,7 @@ const SearchPage = () => {
         })
       : input.search &&
         !searchRestaurants.length && (
-          <p>Desculpe... Não encontrei o que procura.</p>
+          <p>Não encontramos :(</p>
         );
 
   return (
