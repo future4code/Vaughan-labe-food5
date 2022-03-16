@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { Box } from '@material-ui/core'
-import { TextField } from "@material-ui/core";
+import TextFieldStyled from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import axios from "axios";
 import { BASE_URL } from "../../constants/urls";
@@ -15,9 +15,14 @@ const SignupPage = () => {
     email: "",
     cpf: "",
     password: "",
+    
   });
 
   const onSubmitSignUp = (event) => {
+    if(form.password === passwordConfirm) {
+
+   
+
     event.preventDefault();
     axios
       .post(`${BASE_URL}/signup`, form)
@@ -30,11 +35,24 @@ const SignupPage = () => {
       .catch((error) => {
         console.log("Deu errado:", error.response.data.message);
       });
+
+    } else{
+        alert("Deve ser a mesma senha anterior.")
+    }
   };
+
+
+  const [passwordConfirm, setPasswordConfirm] = useState("")
+
+  const handlePassword = (event) => {
+    setPasswordConfirm(event.target.value)
+  }
+
+
 
   return (
     <form onSubmit={onSubmitSignUp}>
-      <TextField
+      <TextFieldStyled
         name={"name"}
         id="outlined-basic"
         label="Nome"
@@ -43,7 +61,7 @@ const SignupPage = () => {
         onChange={onChangeForm}
         required
       />
-      <TextField
+      <TextFieldStyled
         name={"email"}
         id="outlined-basic"
         label="Email"
@@ -52,7 +70,7 @@ const SignupPage = () => {
         onChange={onChangeForm}
         required
       />
-      <TextField
+      <TextFieldStyled
         name={"cpf"}
         id="outlined-basic"
         label="CPF"
@@ -61,15 +79,29 @@ const SignupPage = () => {
         onChange={onChangeForm}
         required
       />
-      <TextField
+      <TextFieldStyled
         name={"password"}
         id="outlined-basic"
         label="Senha"
         variant="outlined"
+        type="password"
         value={form.password}
         onChange={onChangeForm}
         required
       />
+
+        <TextFieldStyled
+        id="outlined-basic" 
+        label="Senha" 
+        variant="outlined"
+        type="password"
+        placeholder="senha"
+        value={passwordConfirm}
+        
+        onChange={handlePassword}
+        
+        />
+
       {/* <TextField id="outlined-basic" label="Confirmar Senha" variant="outlined" value={Confirmpassword} onChange={onChangePassword}/> */}
 
       <Button type="submit">Fazer Cadastro</Button>
