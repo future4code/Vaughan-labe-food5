@@ -19,7 +19,7 @@ const Splashscreen = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            navigate("/login");
+            navigate("/home");
         }, 2000);
     }, []);
 
