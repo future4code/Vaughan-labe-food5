@@ -16,7 +16,7 @@ Nome dos integrantes:
 ![Pagina Detalhes 2]()
 
 ## Descrição: 
-### Projeto de visualização de dados da Poke.api, o usuário é capaz de ver a lista dos 151 pokemons originais, ver seus detalhes e armazená-los em sua pokedex.
+### Projeto de visualização de dados da Api Labe-Foods, o usuário é capaz de ver a Página de login, cadastro e Feed com todos os restaurantes e Comidas. Pode ser ultilizado também a finalização de compra e adicionar ou remover itens do carrinho. Caso o usuário queira adicionar ou alterar o endereço também vai está disponível na aba de alterar endereço.
 
 ### Ajustes e melhorias
 
