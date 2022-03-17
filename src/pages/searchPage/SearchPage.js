@@ -6,6 +6,7 @@ import { PageContainer } from "./styled";
 import { useInput } from "../../hooks/useForm";
 import FeedCard from "../../components/FeedCard/FeedCard";
 import { TextField } from "@material-ui/core";
+import Header from "../../components/Header/Header";
 
 const SearchPage = () => {
   const { states } = useContext(GlobalStateContext);
@@ -47,6 +48,7 @@ const SearchPage = () => {
 
   return (
     <div>
+      <Header />
       <PageContainer>
         <TextField
           variant="outlined"

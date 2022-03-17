@@ -13,6 +13,13 @@ const HeaderContainerBack = styled.div`
   justify-content: center;
   align-items: center;
   justify-content: center;
+  
+  img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 20px;
+  }
 `;
 
 const HeaderContainerTitle = styled.div`
@@ -29,6 +36,22 @@ const Header = () => {
 
   const goBack = () => {
     navigate(-1);
+  };
+
+  const hideBackFromHome = () => {
+    if (location.pathname === "/home") {
+      return (
+        <HeaderContainerBack>
+          <DivFantasma />
+        </HeaderContainerBack>
+      );
+    } else {
+      return (
+        <HeaderContainerBack>
+          <img src={back} alt="Voltar" onClick={goBack} />
+        </HeaderContainerBack>
+      );
+    }
   };
 
   const changeHeaderTitle = (location) => {
@@ -66,7 +89,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderContainerBack>
-        <img src={back} onClick={goBack} />
+        {hideBackFromHome()}
       </HeaderContainerBack>
       <HeaderContainerTitle>
         <h4>{changeHeaderTitle(location)}</h4>

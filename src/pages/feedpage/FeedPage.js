@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { PageContainer } from "./styled";
 import { TextField } from "@material-ui/core";
+import Header from "../../components/Header/Header";
 
 const FeedPage = () => {
   const { states } = useContext(GlobalStateContext);
@@ -18,6 +19,7 @@ const FeedPage = () => {
 
   return (
     <div>
+      <Header />
       <PageContainer>
         <TextField
           variant="outlined"
