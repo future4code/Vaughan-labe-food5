@@ -8,7 +8,7 @@ export const GlobalState = (props) => {
   const [products, setProducts] = useState([]);
   const [openModal, setOpenModal] = useState(false)
   const [cart, setCart] = useState([])
-
+  
   console.log("ESTADO GLOBAL CART", cart)
 
   useEffect(() => {

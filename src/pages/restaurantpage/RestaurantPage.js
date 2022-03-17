@@ -13,6 +13,7 @@ import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 const RestaurantPage = () => {
   const [quantityProduct , setQuantityProduct] = useState(0)
   const [productSelected, setProdutcSelected] = useState({})
+  const [btn, setBtn] = useState([])
   
   const { states, sets } = useContext(GlobalStateContext);
   const pathParams = useParams();
@@ -32,23 +33,26 @@ const RestaurantPage = () => {
   const AddProductToCart = (prod) => {
     setProdutcSelected(prod)
     sets.setOpenModal(true);
+
   };
 
   const addCart = (
     product, quantity
     
   ) => {
-    const foodItem = {...product, quantity:quantity,
+    const foodItem = {...product, quantity:quantity, btnValue: 'remover'
       
     }
 
     const newCart = [...states.cart, foodItem]
-    console.log("foodITEM", foodItem)
     sets.setCart(newCart)
     sets.setOpenModal(false)
-  };
+    const foodItemBtn = {...product, quantity:quantity, btnValue: "remover"
+    }
+    const newBtn = [...btn, foodItemBtn]
+    setBtn(newBtn)
 
- 
+  };
 
 
   const listFoods =
@@ -63,6 +67,28 @@ const RestaurantPage = () => {
           }
         })
 
+        
+        const changeBtnValue = states.cart && states.cart.map((cart)=>{
+          if(cart.id === product.id){
+            return cart.btnValue
+          }
+        })
+
+        const toRemove = (idToRemove) => {
+    
+          const selectedItem = states.cart && states.cart.map((item) => {
+            if(item.id === product.id){
+             return item.quantity = item.quantity -1
+            }
+             return item
+          }).filter((itens) => {
+            return itens.quantity > 0
+          })
+          sets.setCart(selectedItem)
+
+          console.log("REMOVI", states.cart)
+        }
+
         return (
           <CardFood
             prodSelected={productSelected}
@@ -74,6 +100,8 @@ const RestaurantPage = () => {
             addCart={addCart}
             onChangeQuantity={onChangeQuantity}
             onClickAdd={() => AddProductToCart(product)}
+            onClickRemove={() => toRemove(productSelected)}
+            sendBtnChange={changeBtnValue}
           />
         );
       }

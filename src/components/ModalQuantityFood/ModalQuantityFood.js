@@ -75,8 +75,6 @@ const onCloseModal = () => {
   sets.setOpenModal(false)
 }
 
-console.log("produto fora da função", product)
-
   const addToCart = () => {
   sets.setOpenModal(false)
 
