@@ -9,10 +9,27 @@ import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import { useContext } from "react";
 import Footer from "../../components/Footer/Footer";
 import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
+import styled from 'styled-components';
+
+const Badge = styled.div`
+display:flex;
+align-items:center;
+justify-content:center;
+background-color: #E86E5A;
+position: relative;
+top: -40px;
+right: -180px;
+color: #fff;
+padding: 0.5rem;
+height: 10px;
+width: 10px;
+border-radius: 50%;
+`
 
 const RestaurantPage = () => {
   const [quantityProduct , setQuantityProduct] = useState(0)
   const [productSelected, setProdutcSelected] = useState({})
+  const [showBadge, setShowBadge] = useState(false);
   
   const { states, sets } = useContext(GlobalStateContext);
   const pathParams = useParams();
@@ -46,6 +63,7 @@ const RestaurantPage = () => {
     console.log("foodITEM", foodItem)
     sets.setCart(newCart)
     sets.setOpenModal(false)
+    setShowBadge(true)
   };
 
  
@@ -59,7 +77,7 @@ const RestaurantPage = () => {
 
         const quantityOnCart = states.cart && states.cart.map((cart)=>{
           if(cart.id === product.id){
-            return cart.quantity
+            return <Badge>{cart.quantity}</Badge>
           }
         })
 
@@ -74,6 +92,7 @@ const RestaurantPage = () => {
             addCart={addCart}
             onChangeQuantity={onChangeQuantity}
             onClickAdd={() => AddProductToCart(product)}
+            showBadge={showBadge}
           />
         );
       }
