@@ -56,6 +56,7 @@ const RestaurantPage = () => {
     foods.restaurant &&
     foods.restaurant.products.map(
       (product) => {
+
         const quantityOnCart = states.cart && states.cart.map((cart)=>{
           if(cart.id === product.id){
             return cart.quantity
