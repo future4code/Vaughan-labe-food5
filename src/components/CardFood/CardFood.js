@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Button from "@material-ui/core/Button";
 import Badge from "@material-ui/core/Badge";
 import Typography from "@material-ui/core/Typography";
@@ -7,10 +7,15 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ModalQuantityFood from "../ModalQuantityFood/ModalQuantityFood";
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 
-const CardFood = ({prodSelected, product, quantity, addCart,onChangeQuantity, onClickAdd }) => {
+const CardFood = ({senQuantity,prodSelected, product, quantity, addCart,onChangeQuantity, onClickAdd }) => {
   const { states, sets } = useContext(GlobalStateContext);
+
+  console.log("SENDQUANTITY",senQuantity)
+
+  useEffect(()=> {
+
+  }, [states.cart])
   
-console.log("produto selecionado", prodSelected)
   return (
     <div>
     <CardContainer>
@@ -19,7 +24,8 @@ console.log("produto selecionado", prodSelected)
 
       <CardText>
         <IconBtn>
-          <Badge  color="primary" badgeContent={quantity} showZero>
+          
+          <Badge  color="primary" badgeContent={senQuantity}>
             <ShoppingCartIcon color="secondary"/>
           </Badge>
         </IconBtn>

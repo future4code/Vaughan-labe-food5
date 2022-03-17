@@ -45,7 +45,7 @@ const RestaurantPage = () => {
     const newCart = [...states.cart, foodItem]
     console.log("foodITEM", foodItem)
     sets.setCart(newCart)
-    
+    sets.setOpenModal(false)
   };
 
  
@@ -56,7 +56,12 @@ const RestaurantPage = () => {
     foods.restaurant &&
     foods.restaurant.products.map(
       (product) => {
-        
+        const quantityOnCart = states.cart && states.cart.map((cart)=>{
+          if(cart.id === product.id){
+            return cart.quantity
+          }
+        })
+
         return (
           <CardFood
             prodSelected={productSelected}
@@ -64,6 +69,7 @@ const RestaurantPage = () => {
             key={product.id}
             restaurantId={pathParams.id}
             quantity={quantityProduct}
+            senQuantity={quantityOnCart}
             addCart={addCart}
             onChangeQuantity={onChangeQuantity}
             onClickAdd={() => AddProductToCart(product)}
