@@ -59,7 +59,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://avatars.githubusercontent.com/u/59378360?v=4" width="100px;" alt="foto gabriel github"/><br>
+        <img src="https://avatars.githubusercontent.com/u/85976494?v=4" width="100px;" alt="foto raquel github"/><br>
         <sub>
           <b>Gabriel Ferreira</b>
         </sub>
@@ -68,6 +68,15 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     <td align="center">
       <a href="#">
         <img src="https://avatars.githubusercontent.com/u/86195881?v=4" width="100px;" alt="foto jardel github"/><br>
+        <sub>
+          <b>Jardel Santos</b>
+        </sub>
+                </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/94733546?v=4" width="100px;" alt="foto Rafael github"/><br>
         <sub>
           <b>Jardel Santos</b>
         </sub>
