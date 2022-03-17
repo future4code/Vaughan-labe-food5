@@ -10,6 +10,7 @@ import { useContext } from "react";
 import Footer from "../../components/Footer/Footer";
 import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 import styled from 'styled-components';
+import Header from "../../components/Header/Header";
 
 const Badge = styled.div`
 display:flex;
@@ -99,7 +100,7 @@ const RestaurantPage = () => {
     );
   return (
     <div>
-      <h1>Restaurantes</h1>
+      <Header />
 
 
       {foods && foods.restaurant && (
