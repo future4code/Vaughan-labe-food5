@@ -34,8 +34,8 @@ export const ColorTxt = styled.span`
 `;
 
 export const IconBtn = styled.div`
-display:flex;
-align-self:flex-end
+  display: flex;
+  justify-content: flex-end;
 
 `
 export const ButtonCnt = styled.div`
