@@ -74,17 +74,22 @@ const RestaurantPage = () => {
           }
         })
 
-        const toRemove = (idToRemove) => {
+        const toRemove = () => {
     
-          const selectedItem = states.cart && states.cart.map((item) => {
+          const updateProductsInCart = states.cart && states.cart.map((item) => {
             if(item.id === product.id){
-             return item.quantity = item.quantity -1
+            //  return item.quantity = item.quantity -1
+            return {
+              ...item,
+              quantity: item.quantity -1
             }
-             return item
-          }).filter((itens) => {
-            return itens.quantity > 0
+            }
+            return item
+          }).filter((item) => {
+            return item.quantity > 0
           })
-          sets.setCart(selectedItem)
+
+          sets.setCart(updateProductsInCart)
 
           console.log("REMOVI", states.cart)
         }
@@ -100,7 +105,7 @@ const RestaurantPage = () => {
             addCart={addCart}
             onChangeQuantity={onChangeQuantity}
             onClickAdd={() => AddProductToCart(product)}
-            onClickRemove={() => toRemove(productSelected)}
+            onClickRemove={toRemove}
             sendBtnChange={changeBtnValue}
           />
         );
