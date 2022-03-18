@@ -11,10 +11,28 @@ import Footer from "../../components/Footer/Footer";
 import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {CentralizeLoading} from './styled'
+import styled from 'styled-components';
+import Header from "../../components/Header/Header";
+
+const Badge = styled.div`
+display:flex;
+align-items:center;
+justify-content:center;
+background-color: #E86E5A;
+position: relative;
+top: -40px;
+right: -180px;
+color: #fff;
+padding: 0.5rem;
+height: 10px;
+width: 10px;
+border-radius: 50%;
+`
 
 const RestaurantPage = () => {
-  const [quantityProduct, setQuantityProduct] = useState(0);
-  const [productSelected, setProdutcSelected] = useState({});
+  const [quantityProduct , setQuantityProduct] = useState(0)
+  const [productSelected, setProdutcSelected] = useState({})
+  const [showBadge, setShowBadge] = useState(false);
   const [btn, setBtn] = useState([]);
   const [category, setCategory] = useState([]);
 
@@ -57,6 +75,8 @@ const RestaurantPage = () => {
     };
     const newBtn = [...btn, foodItemBtn];
     setBtn(newBtn);
+    sets.setOpenModal(false)
+    setShowBadge(true)
   };
 
   // const checkCategory = (products) => {
@@ -73,12 +93,12 @@ const RestaurantPage = () => {
   const listFoods =
     foods &&
     foods.restaurant &&
-    foods.restaurant.products.map((product) => {
-      const quantityOnCart =
-        states.cart &&
-        states.cart.map((cart) => {
-          if (cart.id === product.id) {
-            return cart.quantity;
+    foods.restaurant.products.map(
+      (product) => {
+
+        const quantityOnCart = states.cart && states.cart.map((cart)=>{
+          if(cart.id === product.id){
+            return <Badge>{cart.quantity}</Badge>
           }
         });
 
@@ -126,12 +146,13 @@ const RestaurantPage = () => {
           onClickAdd={() => AddProductToCart(product, pathParams.id)}
           onClickRemove={toRemove}
           sendBtnChange={changeBtnValue}
+          showBadge={showBadge}
         />
       );
     });
   return (
     <div>
-      <h1>Restaurantes</h1>
+      <Header />
 
       {foods && foods.restaurant && (
         <CardRestaurant

@@ -5,7 +5,7 @@ import back from "../../assets/back.svg";
 import { useNavigate } from "react-router-dom";
 import { SaveEditProfile, EditProfileContainer } from "./styled";
 import { handleProfile } from "../../axiosRequests/user";
-import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -26,6 +26,7 @@ const EditProfile = () => {
 
   return (
     <>
+    <Header />
       <EditProfileContainer>
         <TextFieldStyled
           onSubmit={handleSubmission}
@@ -59,7 +60,6 @@ const EditProfile = () => {
         />
         <SaveEditProfile onClick={handleSubmission}>SALVAR</SaveEditProfile>
       </EditProfileContainer>
-      <Footer />
     </>
   );
 };

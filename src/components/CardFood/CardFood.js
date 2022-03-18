@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
-import Badge from "@material-ui/core/Badge";
+// import Badge from "@material-ui/core/Badge";
 import Typography from "@material-ui/core/Typography";
 import {
   CardContainer,
@@ -8,6 +8,7 @@ import {
   ColorTxt,
   ButtonCnt,
   IconBtn,
+  // Badge,
 } from "./styled";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ModalQuantityFood from "../ModalQuantityFood/ModalQuantityFood";
@@ -22,7 +23,8 @@ const CardFood = ({
   onChangeQuantity,
   onClickAdd,
   onClickRemove,
-  sendBtnChange
+  sendBtnChange,
+  showBadge
 }) => {
   const { states, sets } = useContext(GlobalStateContext);
 
@@ -46,9 +48,18 @@ const CardFood = ({
             </Badge>
           </IconBtn> */}
 
-          {senQuantity.length > 0 ? <IconBtn><ShoppingCartIcon color="secondary" />{senQuantity}</IconBtn>: 
-            <IconBtn><ShoppingCartIcon color="secondary" /></IconBtn>
-          }
+          {showBadge ? (
+            <>
+            <IconBtn>
+              <ShoppingCartIcon color="secondary" />
+            </IconBtn>
+            {senQuantity}
+            </>
+          ) : (
+            <IconBtn>
+              <ShoppingCartIcon color="secondary" />
+            </IconBtn>
+          )}
 
           <Typography color="primary" variant="h5">
             {product.name}

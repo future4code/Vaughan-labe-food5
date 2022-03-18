@@ -21,6 +21,7 @@ import {
 } from "../../axiosRequests/user";
 import Footer from "../../components/Footer/Footer";
 import useForm from "../../hooks/useForm";
+import Header from "../../components/Header/Header";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -44,6 +45,7 @@ const ProfilePage = () => {
 
   return (
     <>
+    <Header />
       <PageContainer>
         <Container>
           <RegisteredProfile>
