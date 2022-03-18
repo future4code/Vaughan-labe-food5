@@ -51,10 +51,19 @@ const RestaurantPage = () => {
     setQuantityProduct(event.target.value);
   };
 
-  const AddProductToCart = (prod, id) => {
-    setProdutcSelected(prod);
-    sets.setOpenModal(true);
+  const AddProductToCart = (prod) => {
+    if(states.restaurantId && states.restaurantId !== pathParams.id){
+      if(window.confirm("Quer modificar seu pedido? Lembre-se que você tem produtos adicionados na sua cesta. Deseja remover estes produtos e adicionar novos?")){
+        sets.setRestaurantId("")
+        sets.setCart([])
+        setProdutcSelected(prod);
+        sets.setOpenModal(true);
+      }
+    }else{
+      setProdutcSelected(prod);
+      sets.setOpenModal(true);
   };
+}
 
   const addCart = (product, quantity) => {
     const foodItem = {
@@ -77,6 +86,7 @@ const RestaurantPage = () => {
     setBtn(newBtn);
     sets.setOpenModal(false)
     setShowBadge(true)
+    sets.setRestaurantId(pathParams.id)
   };
 
   // const checkCategory = (products) => {
@@ -143,7 +153,7 @@ const RestaurantPage = () => {
           senQuantity={quantityOnCart}
           addCart={addCart}
           onChangeQuantity={onChangeQuantity}
-          onClickAdd={() => AddProductToCart(product, pathParams.id)}
+          onClickAdd={() => AddProductToCart(product)}
           onClickRemove={toRemove}
           sendBtnChange={changeBtnValue}
           showBadge={showBadge}
@@ -176,4 +186,4 @@ const RestaurantPage = () => {
   );
 };
 
-export default RestaurantPage;
+export default RestaurantPage
