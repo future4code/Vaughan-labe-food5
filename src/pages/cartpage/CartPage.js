@@ -40,6 +40,7 @@ import CardFood from "../../components/CardFood/CardFood";
 import { Button, Checkbox } from "@material-ui/core";
 import { RestaurantMenu } from "@material-ui/icons";
 import { useRequestData } from "../../hooks/useRequestData";
+import CardFoodInCart from "../../components/CardFoodInCart/CardFoodInCart";
 
 const CartPage = () => {
   const [address, setAddress] = useState({});
@@ -97,6 +98,45 @@ const CartPage = () => {
     </AdressContainer>
   );
 
+
+const listProductsInCart = states.cart && states.cart.map((product) => {
+
+
+    const toRemove = () => {
+        const updateProductsInCart =
+          states.cart &&
+          states.cart
+            .map((item) => {
+              if (item.id === product.id) {
+                //  return item.quantity = item.quantity -1
+                return {
+                  ...item,
+                  quantity: item.quantity - 1,
+                };
+              }
+              return item;
+            })
+            .filter((item) => {
+              return item.quantity > 0;
+            });
+
+        sets.setCart(updateProductsInCart);
+
+        console.log("REMOVI", states.cart);
+      };
+
+    return(
+        <CardFoodInCart
+          product={product}
+          key={product.id}
+         senQuantity={product.quantity}
+          onClickRemove={toRemove}
+          
+          />
+    )
+})
+
+
   return (
     console.log("CARRINHO", states.cart),
     console.log("RESTAURANTE", restaurant),
@@ -113,7 +153,9 @@ const CartPage = () => {
         <span>{restaurantDetails.restaurant.deliveryTime}</span>
     </RestaurantContainer>)}
 
-          {restaurant.map((restaurant) => (
+    {states.cart && states.cart.length > 0 ?  listProductsInCart : <p>Carrinho vazio</p>}
+
+          {/* {restaurant.map((restaurant) => (
             <RestaurantContainer>
               <p>{restaurant.name}</p>
               <span>Restaurant Address</span>
@@ -144,7 +186,9 @@ const CartPage = () => {
                 </ProductInfoContainer>
               </ProductContainer>
             );
-          })}
+          })} */}
+
+
 
           <ShippingText>
             <p>Frete:</p>
