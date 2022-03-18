@@ -22,11 +22,11 @@ const CardFood = ({
   addCart,
   onChangeQuantity,
   onClickAdd,
-  showBadge,
+  onClickRemove,
+  sendBtnChange,
+  showBadge
 }) => {
   const { states, sets } = useContext(GlobalStateContext);
-
-  console.log("SENDQUANTITY", senQuantity);
 
   useEffect(() => {}, [states.cart]);
 
@@ -71,9 +71,12 @@ const CardFood = ({
           </ColorTxt>
           <Typography variant="h6">R$: {product.price}</Typography>
           <ButtonCnt>
-            <Button onClick={onClickAdd} color="primary" variant="outlined">
+            {sendBtnChange.length > 0 && sendBtnChange.includes('remover') ? <Button onClick={onClickRemove} variant="outlined" color="error">Remover</Button> : <Button onClick={onClickAdd} color="primary" variant="outlined">Adicionar</Button>}
+
+            {/* <Button onClick={onClickAdd} color="primary" variant="outlined">
               Adicionar
-            </Button>
+            </Button> */}
+
           </ButtonCnt>
         </CardText>
         {prodSelected && prodSelected.id && states.openModal && (
