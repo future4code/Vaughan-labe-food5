@@ -70,7 +70,7 @@ const RestaurantPage = () => {
       ...product,
       quantity: quantity,
       btnValue: "remover",
-      idRestaurant: pathParams.id,
+      idRestaurant: Number(pathParams.id),
     };
 
     const newCart = [...states.cart, foodItem];
