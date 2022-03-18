@@ -27,6 +27,7 @@ import {
   PaymentContainer,
   Quantity,
   CheckBox,
+  PlaceholderCtn,
 } from "./styled";
 import { getProfile, getDetailRestaurant } from "../../axiosRequests/user";
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
@@ -41,6 +42,7 @@ import { Button, Checkbox } from "@material-ui/core";
 import { RestaurantMenu } from "@material-ui/icons";
 import { useRequestData } from "../../hooks/useRequestData";
 import CardFoodInCart from "../../components/CardFoodInCart/CardFoodInCart";
+import cartEmpty  from '../../assets/empty-cart.png'
 
 const CartPage = () => {
   const [address, setAddress] = useState({});
@@ -57,20 +59,7 @@ const CartPage = () => {
     errorRestaurantDetails,
   ] = useRequestData(`${BASE_URL}/restaurants/${states.restaurantId}`);
 
-  console.log("DETALHES DO RESTAURANTE", restaurantDetails);
-
-//   const restaurantInfoList =
-//     states.restaurantId &&
-//     restaurantDetails &&
-//     restaurantDetails.restaurant.map((restautantInfo) => {
-//       return (
-//         <RestaurantContainer>
-//           <p>{restautantInfo.name}</p>
-//           <span>Restaurant Address</span>
-//           <span>Delivery time</span>
-//         </RestaurantContainer>
-//       );
-//     });
+ 
 
   const removeItem = (item) => {
     const newArray = product.filter((pdt) => {
@@ -153,43 +142,12 @@ const listProductsInCart = states.cart && states.cart.map((product) => {
         <span>{restaurantDetails.restaurant.deliveryTime}</span>
     </RestaurantContainer>)}
 
-    {states.cart && states.cart.length > 0 ?  listProductsInCart : <p>Carrinho vazio</p>}
+    {states.cart && states.cart.length > 0 ?  listProductsInCart : <PlaceholderCtn>
+        <h3>O seu carrinho está vazio</h3>
+        <img src={cartEmpty} alt="Carrinho vazio"/>
+        </PlaceholderCtn>}
 
-          {/* {restaurant.map((restaurant) => (
-            <RestaurantContainer>
-              <p>{restaurant.name}</p>
-              <span>Restaurant Address</span>
-              <span>Delivery time</span>
-            </RestaurantContainer>
-          ))}
-
-          {states.cart.map((item) => {
-            return (
-              <ProductContainer>
-                <ProductImageContainer>
-                  <img src={item.photoUrl} alt="product Img" />
-                </ProductImageContainer>
-                <ProductInfoContainer>
-                  <QuantityContainer>
-                    <Quantity>{item.quantity}</Quantity>
-                  </QuantityContainer>
-                  <ProductInfo>
-                    <p>{item.name}</p>
-                    <span>{item.description}</span>
-                    <strong>R${item.price}</strong>
-                  </ProductInfo>
-                  <RemoveButtonContainer>
-                    <RemoveButton onClick={() => removeItem(item)}>
-                      remover
-                    </RemoveButton>
-                  </RemoveButtonContainer>
-                </ProductInfoContainer>
-              </ProductContainer>
-            );
-          })} */}
-
-
-
+          
           <ShippingText>
             <p>Frete:</p>
             <p>{shipping}</p>
