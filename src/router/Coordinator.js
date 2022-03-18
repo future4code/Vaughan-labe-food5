@@ -29,3 +29,7 @@ export const goToEditProfile = (navigate) =>{
 export const goToEditAddress = (navigate) =>{
     navigate("/editarEndereco")
 };
+
+export const goToCart = (navigate) => {
+    navigate("/carrinho")
+}
