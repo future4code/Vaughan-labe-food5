@@ -7,7 +7,6 @@ import { useInput } from "../../hooks/useForm";
 import FeedCard from "../../components/FeedCard/FeedCard";
 import { InputAdornment, TextField } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
-import { TextField } from "@material-ui/core";
 import Header from "../../components/Header/Header";
 
 const SearchPage = () => {
