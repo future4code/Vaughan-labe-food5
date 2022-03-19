@@ -33,7 +33,7 @@ Além disto ter um editor de código como [VSCode](https://code.visualstudio.com
 $ git clone <https://github.com/future4code/molina-labe-food3>
 
 # Acesse a pasta do projeto no terminal
-$ cd ./molina-labe-food3
+$ cd ./Vaughan-labe-food5
 
 # Instale as dependências
 $ npm install
@@ -65,12 +65,14 @@ $ npm run start
 <img src="https://i.postimg.cc/6pzPmdNP/Rappi4-Abertura.png" alt="imagem principal">
 
 # Imagens:
-![Pagina Detalhes 1]()
-![Pagina Detalhes 2]()
-
-
-
-
+![image](https://user-images.githubusercontent.com/94733546/159110599-b3cbd39f-9df5-48a5-b479-07ece8572d99.png)
+![image](https://user-images.githubusercontent.com/94733546/159110613-1059cd64-95b6-44a6-96a7-56971fa9aec8.png)
+![image](https://user-images.githubusercontent.com/94733546/159110637-e5ecec3a-bc1b-4d42-9204-e3c7ed884ea6.png)
+![image](https://user-images.githubusercontent.com/94733546/159110682-f93b35e3-99bf-4a67-8072-15c7b10e8463.png)
+![image](https://user-images.githubusercontent.com/94733546/159110771-067cd027-91e3-4790-8aaa-cc23d3c1ef38.png)
+![image](https://user-images.githubusercontent.com/94733546/159110785-d9a3fc5b-7ed4-4dfe-a3c6-d05482e7856b.png)
+![image](https://user-images.githubusercontent.com/94733546/159110792-ca81c2e0-7e04-458a-88f0-c2fb5f4bdb35.png)
+![image](https://user-images.githubusercontent.com/94733546/159110809-41e5057b-59be-45e6-b35f-efc057f7e9cf.png)
 
 
 ## 🤝 Colaboradores
