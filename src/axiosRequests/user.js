@@ -119,7 +119,7 @@ export const getRestaurants = (setRestaurants) => {
 export const getDetailRestaurant = (id, setRestaurant) => {
   const headers = {
     headers: {
-      Auth: localStorage.getItem("token")
+      auth: localStorage.getItem("token")
     }
   }
   axios
@@ -147,5 +147,28 @@ export const getOrderHistory = (setOrders) => {
     .then((response) => setOrders(response.data.orders))
     .catch((err) => {
       console.log(err.response);
+    })
+}
+
+
+// *************** AXIOS ENVIAR PEDIDO ***************** //
+
+export const sendOrder = (id, body, clear, navigate) => {
+  const headers = {
+    headers: {
+      auth: localStorage.getItem("token")
+    }
+  }
+
+  axios
+    .post(`${BASE_URL}/restaurants/${id}/order`, body, headers)
+    .then((res) => {
+      alert("Pedido enviado com sucesso!");
+      console.log(res.data);
+      clear();
+    })
+    .catch((error) => {
+      alert("Pedido deu erro");
+      console.log(error.response);
     })
 }
