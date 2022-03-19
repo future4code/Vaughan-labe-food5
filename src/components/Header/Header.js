@@ -62,7 +62,7 @@ const Header = () => {
     } else if (location.pathname.includes("/perfil")) {
       return "Meu perfil";
     } else if (location.pathname.includes("/home")) {
-      return "Home";
+      return "Rappi4";
     } else if (location.pathname.includes("/pedido")) {
       return "Pedido";
     } else if (location.pathname.includes("/pedidos")) {

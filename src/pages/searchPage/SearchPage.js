@@ -2,9 +2,11 @@ import React, { useContext, useMemo } from "react";
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
-import { PageContainer } from "./styled";
+import { ConteinerInput, PageContainer } from "./styled";
 import { useInput } from "../../hooks/useForm";
 import FeedCard from "../../components/FeedCard/FeedCard";
+import { InputAdornment, TextField } from "@material-ui/core";
+import { Search } from "@material-ui/icons";
 import { TextField } from "@material-ui/core";
 import Header from "../../components/Header/Header";
 
@@ -12,10 +14,7 @@ const SearchPage = () => {
   const { states } = useContext(GlobalStateContext);
   const { input, onChangeInput } = useInput({ search: "" });
   const navigate = useNavigate();
-
-  const goToFeed = () => {
-    navigate(`/Home`);
-  };
+  
   const goToRestaurantDetail = (id) => {
     navigate(`/restaurante/${id}`);
   };
@@ -50,14 +49,23 @@ const SearchPage = () => {
     <div>
       <Header />
       <PageContainer>
+        <ConteinerInput>
         <TextField
           variant="outlined"
-          placeholder={"  Restaurantes"}
+          placeholder={'   Restaurantes'}
           type="text"
           onChange={onChangeInput}
           value={input.search}
           name={"search"}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Search />
+              </InputAdornment>
+            ),
+          }}
         />
+        </ConteinerInput>
         <div>
         {renderRestaurants ? (
           renderRestaurants

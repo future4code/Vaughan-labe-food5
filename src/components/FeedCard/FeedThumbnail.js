@@ -11,10 +11,7 @@ const FeedThumbnail = ({
 }) => {
   return (
     <ConteinerThumb key={id} onClick={onClickRestaurant}>
-      {/* <ImgContainer> */}
       <IMG src={image} alt={name} />
-      {/* </ImgContainer> */}
-      
         <RestaurantContainer>
         <strong>{name}</strong>
         <Foot>
@@ -31,11 +28,4 @@ const FeedThumbnail = ({
 };
 
 export default FeedThumbnail;
-// address:
-// category:
-// deliveryTime:
-// description:
-// id:
-// logoUrl:
-// name:
-// shipping:
+
