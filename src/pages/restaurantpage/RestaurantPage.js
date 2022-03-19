@@ -10,7 +10,7 @@ import { useContext } from "react";
 import Footer from "../../components/Footer/Footer";
 import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {CentralizeLoading} from './styled'
+import {CentralizeLoading, RestaurantPageContainer} from './styled'
 import styled from 'styled-components';
 import Header from "../../components/Header/Header";
 
@@ -21,7 +21,7 @@ justify-content:center;
 background-color: #E86E5A;
 position: relative;
 top: -40px;
-right: -180px;
+right: -160px;
 color: #fff;
 padding: 0.5rem;
 height: 10px;
@@ -45,6 +45,7 @@ const RestaurantPage = () => {
 
   useEffect(() => {
     sets.setOpenModal(false);
+    {states.cart.length > 0 ? setShowBadge(true) : setShowBadge(false)}
   }, []);
 
   const onChangeQuantity = (event) => {
@@ -168,7 +169,7 @@ const RestaurantPage = () => {
       );
     });
   return (
-    <div>
+    <RestaurantPageContainer>
       <Header />
 
       {foods && foods.restaurant && (
@@ -189,7 +190,7 @@ const RestaurantPage = () => {
         <p>Não há nenhuma postagem</p>
       )}
       <Footer />
-    </div>
+    </RestaurantPageContainer>
   );
 };
 
