@@ -66,9 +66,16 @@ const RestaurantPage = () => {
 }
 
   const addCart = (product, quantity) => {
+    console.log("QUANTIDADE", quantity)
+    let quant = quantity
+    console.log("quant", quant)
+    if(quant === 0){
+       quant = quant + 1
+    }
+  
     const foodItem = {
       ...product,
-      quantity: quantity,
+      quantity: quant,
       btnValue: "remover",
       idRestaurant: Number(pathParams.id),
     };
@@ -78,7 +85,7 @@ const RestaurantPage = () => {
     sets.setOpenModal(false);
     const foodItemBtn = {
       ...product,
-      quantity: quantity,
+      quantity: quant,
       btnValue: "remover",
       idRestaurant: pathParams.id,
     };
