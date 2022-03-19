@@ -1,7 +1,7 @@
 # Rappi4
 
 ## Link do surge - Link para visualização do site
-<a href="https://rappi4-5.surge.sh/login">Rappi4</a>
+<a href="https://rappi4-5.surge.sh">Rappi4</a>
 
 Nome dos integrantes: 
 - Filipe Dias Correia
