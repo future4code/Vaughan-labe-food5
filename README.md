@@ -1,7 +1,7 @@
 # Rappi4A
 
 ## Descrição: 
-### Nosso projeto foi criado com a intenção de ter funcionalidades parecidas com Apps de delivery de comida, nosso modelo se assemelha com o Rappi, seguindo seu Layout e Cores. Temos como objetivo fazer o usuário fazer login ou até mesmo criar sua conta, após o login, poderá interagir com os restaurantes, adicionar produtos ao carrinho e visualizar seu pedido em andamento. Teremos uma aba de perfil aonde poderá visualizar seus dados e atualiza-lo conforme for preciso e visualizar o histórico de pedidos feito pelo usuário.  
+### Nosso projeto foi criado com a intenção de ter funcionalidades parecidas com Apps de delivery de comida, nosso modelo se assemelha com o Rappi, seguindo seu Layout e Cores. Temos como objetivo fazer o usuário logar ou até mesmo se cadastrar, após o login, poderá interagir com os restaurantes, adicionar produtos ao carrinho e visualizar seu pedido em andamento. Teremos uma aba de perfil aonde poderá visualizar seus dados e atualiza-lo conforme for preciso e visualizar o histórico de pedidos feito pelo usuário.  
 
 ## Link do surge - Link para visualização do site
 <a href="https://rappi4-5.surge.sh">Rappi4</a>
