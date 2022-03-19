@@ -113,10 +113,7 @@ const cartQuantity = states.cart && states.cart.map((product) => {
 });
 
 const body = {
-  "products": [{
-    "id": cartId,
-    "quantity": cartQuantity
-  }],
+  "products": states.cart,
   "paymentMethod": payment,
 }
 
@@ -124,9 +121,10 @@ const body = {
     console.log("CARRINHO", states.cart),
     console.log("RESTAURANTE", restaurant),
     console.log(body),
-    console.log("ID DO CARRINHO", cartId),
-    console.log("QUANTIDADE", cartQuantity),
+    console.log("ID DO PRODUTO", cartId[0]),
+    console.log("QUANTIDADE", cartQuantity[0]),
     console.log("ID DO RESTAURANTE", states.restaurantId),
+    console.log("BODY:",body),
     (
       <>
         <Header />

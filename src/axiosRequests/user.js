@@ -45,6 +45,7 @@ export const handleAdress = (body, clear, navigate) => {
   axios
     .put(`${BASE_URL}/address`, body, headers)
     .then((res) => {
+      localStorage.setItem("token", res.data.token)
       alert("Endereço alterado com sucesso!");
       console.log(res.data);
       clear();
@@ -153,7 +154,7 @@ export const getOrderHistory = (setOrders) => {
 
 // *************** AXIOS ENVIAR PEDIDO ***************** //
 
-export const sendOrder = (id, body, clear, navigate) => {
+export const sendOrder = (id, body, navigate) => {
   const headers = {
     headers: {
       auth: localStorage.getItem("token")
@@ -165,7 +166,7 @@ export const sendOrder = (id, body, clear, navigate) => {
     .then((res) => {
       alert("Pedido enviado com sucesso!");
       console.log(res.data);
-      clear();
+      // clear();
     })
     .catch((error) => {
       alert("Pedido deu erro");
