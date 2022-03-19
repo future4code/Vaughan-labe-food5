@@ -30,7 +30,7 @@ Além disto ter um editor de código como [VSCode](https://code.visualstudio.com
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/future4code/molina-labe-food3>
+$ git clone <https://github.com/future4code/Vaughan-labe-food5.git>
 
 # Acesse a pasta do projeto no terminal
 $ cd ./Vaughan-labe-food5
