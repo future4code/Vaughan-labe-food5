@@ -8,28 +8,15 @@ import { useNavigate } from "react-router-dom";
 import {
   AddressContainer,
   RestaurantContainer,
-  AdressDelivery,
   AdressContainer,
   CartContainer,
-  Title,
   ShippingText,
   SubtotalPrice,
-  TotalPrice,
-  PaymentMethodText,
-  ProductContainer,
-  ProductImageContainer,
-  ProductInfoContainer,
-  QuantityContainer,
-  ProductInfo,
-  RemoveButtonContainer,
-  RemoveButton,
   ButtonContainer,
   PaymentContainer,
-  Quantity,
-  CheckBox,
   PlaceholderCtn,
 } from "./styled";
-import { getProfile, getDetailRestaurant } from "../../axiosRequests/user";
+import { getProfile, getDetailRestaurant, sendOrder } from "../../axiosRequests/user";
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import {
   FormControl,
@@ -60,14 +47,6 @@ const CartPage = () => {
   ] = useRequestData(`${BASE_URL}/restaurants/${states.restaurantId}`);
 
  
-
-  const removeItem = (item) => {
-    const newArray = product.filter((pdt) => {
-      return pdt.id !== item.id;
-    });
-    setProduct(newArray);
-  };
-
   useEffect(() => {
     getProfile(setAddress);
     getDetailRestaurant(states.cart.idRestaurant, setRestaurant);
@@ -125,10 +104,29 @@ const listProductsInCart = states.cart && states.cart.map((product) => {
     )
 })
 
+const cartId = states.cart && states.cart.map((product) => {
+  return product.id;
+});
+
+const cartQuantity = states.cart && states.cart.map((product) => {
+  return product.quantity;
+});
+
+const body = {
+  "products": [{
+    "id": cartId,
+    "quantity": cartQuantity
+  }],
+  "paymentMethod": payment,
+}
 
   return (
     console.log("CARRINHO", states.cart),
     console.log("RESTAURANTE", restaurant),
+    console.log(body),
+    console.log("ID DO CARRINHO", cartId),
+    console.log("QUANTIDADE", cartQuantity),
+    console.log("ID DO RESTAURANTE", states.restaurantId),
     (
       <>
         <Header />
@@ -148,20 +146,22 @@ const listProductsInCart = states.cart && states.cart.map((product) => {
         </PlaceholderCtn>}
 
           
+          {restaurantDetails && restaurantDetails.restaurant && (
           <ShippingText>
-            <p>Frete:</p>
-            <p>{shipping}</p>
+            <p>Frete: R${restaurantDetails.restaurant.shipping}</p>
           </ShippingText>
+          )}
 
+
+          {restaurantDetails && restaurantDetails.restaurant && states.cart && states.cart.length > 0 && (
           <SubtotalPrice>
-            <p>Subtotal:</p>
-            <p>
-              {states.cart.reduce((frete, pdt) => {
-                return pdt.price * pdt.quantity + frete;
-              }, 0)}
-            </p>
+            <span>Subtotal: R${states.cart.reduce((acc, item) => {
+              return acc + item.price * item.quantity + Number(`${restaurantDetails.restaurant.shipping}`);
+            }, 0)}</span>
           </SubtotalPrice>
+          )}
 
+          {states.cart && states.cart.length > 0 && (
           <PaymentContainer>
             <p>Forma de pagamento</p>
             <FormControl component="fieldset">
@@ -172,29 +172,37 @@ const listProductsInCart = states.cart && states.cart.map((product) => {
                 onChange={(e) => setPayment(e.target.value)}
               >
                 <FormControlLabel
-                  value="dinheiro"
+                  value="money"
                   control={<Radio />}
                   label="Dinheiro"
                 />
                 <FormControlLabel
-                  value="cartao"
+                  value="creditcard"
                   control={<Radio />}
                   label="Cartão"
                 />
               </RadioGroup>
             </FormControl>
           </PaymentContainer>
+          )}
 
+          {states.cart && states.cart.length > 0 && (
           <ButtonContainer>
             <Button
+            
               variant="contained"
               color="primary"
               fullWidth
               style={{ margin: "10px" }}
+              onClick={() => { sendOrder(states.restaurantId, body )}}
+                
             >
               Confirmar
             </Button>
           </ButtonContainer>
+          )}
+
+
         </CartContainer>
         <Footer />
       </>

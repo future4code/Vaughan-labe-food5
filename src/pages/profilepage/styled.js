@@ -80,6 +80,11 @@ export const RegisteredProfile = styled.div`
   }
 
   strong{
+    margin-top: 10px;
+    font-size: 1em;
+  }
+
+  span{
     font-size: 0.8em;
   }
   `;

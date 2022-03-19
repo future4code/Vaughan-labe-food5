@@ -43,7 +43,27 @@ const ProfilePage = () => {
     return dateUTC.toLocaleTimeString();
   };
 
+  const renderAddress = profile.address ? (
+    <>
+    <AddressContainer>
+            <p>Endereço cadastrado:</p>
+            <p>{profile.address}</p>
+          </AddressContainer>
+          <EditContainer>
+            <CreateIcon onClick={() => goToEditAddress(navigate)} />
+          </EditContainer>
+          </>
+  ) : (
+    <AddressContainer>
+      <p>
+        Favor cadastrar um endereçoclicando{" "}
+        <strong onClick={() => navigate("/endereco")}>aqui.</strong>
+      </p>
+    </AddressContainer>
+  );
+
   return (
+    console.log(orderHistory),
     <>
     <Header />
       <PageContainer>
@@ -57,30 +77,40 @@ const ProfilePage = () => {
             <CreateIcon onClick={() => goToEditProfile(navigate)} />
           </EditContainer>
         </Container>
+
         <Container2>
-          <AddressContainer>
-            <p>Endereço cadastrado:</p>
-            <p>{profile.address}</p>
-          </AddressContainer>
-          <EditContainer>
-            <CreateIcon onClick={() => goToEditAddress(navigate)} />
-          </EditContainer>
+          {renderAddress}
         </Container2>
+
         <OrderHistoryTitleContainer>
           <p>Histórico de pedidos</p>
           <hr />
+
+
+
+          {orderHistory.length > 0 ? (
+            <div>
+              {orderHistory.map((order) => {
+                return (
+                  <OrderHistoryContainer key={order.id}>
+                    <p>{order.restaurantName}</p>
+                  <span>{formatDateToLocalDate(order.createdAt)}, {formatDateToLocalTime(order.createdAt)}</span>
+                  <br />
+                  <strong>SUBTOTAL: R${order.totalPrice}</strong>
+                  </OrderHistoryContainer>
+                );
+              })}
+            </div>
+      
+              
+          ) : (
+            <p>Nenhum pedido realizado</p>
+          )}
+
+
         </OrderHistoryTitleContainer>
-        {orderHistory.map((order) => (
-          <OrderHistoryContainer>
-            <p>{order.restaurantName}</p>
-            <strong>
-              {formatDateToLocalDate(order.createdAt)},{" "}
-              {formatDateToLocalTime(order.createdAt)}
-            </strong>
-            <h4>SUBTOTAL R$:{order.totalPrice + "0"}</h4>
-          </OrderHistoryContainer>
-        ))}
       </PageContainer>
+
       <Footer />
     </>
   );
