@@ -8,9 +8,7 @@ export const GlobalState = (props) => {
   const [products, setProducts] = useState([]);
   const [openModal, setOpenModal] = useState(false)
   const [cart, setCart] = useState([])
-
-  console.log("ESTADO GLOBAL CART", cart)
-
+  
   useEffect(() => {
     pegarRestaurants();
   }, []);
@@ -38,6 +36,7 @@ export const GlobalState = (props) => {
               return a.id - b.id;
             });
             setProducts(orderedList);
+            
           }
         })
         .catch((error) => console.log(error.message));

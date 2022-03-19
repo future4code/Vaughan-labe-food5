@@ -8,6 +8,7 @@ export const Conteiner = styled.div`
   margin-top: 20px;
   margin-left: 10px;
   margin-right: 10px;
+  overflow: hidden;
 `;
 export const ConteinerThumb = styled.div`
   display: flex;

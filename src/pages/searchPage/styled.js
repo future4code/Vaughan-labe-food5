@@ -9,3 +9,10 @@ export const PageContainer = styled.div`
     }
     
 `;
+export const ConteinerInput = styled.div`
+  display: flex;
+  justify-content: center;
+    input{
+        width: 75vw;
+    }
+`;
