@@ -6,7 +6,6 @@
 ## Link do surge - Link para visualização do site
 <a href="https://rappi4-5.surge.sh">Rappi4</a>
 
-
 <h2 id="tecnologias"> 🛠 Tecnologias </h2>
 
 As seguintes ferramentas foram usadas na construção do projeto:
@@ -20,6 +19,30 @@ As seguintes ferramentas foram usadas na construção do projeto:
 * Metodologias Ágeis
 * Scrum
 
+## 💻 Pré-requisitos
+(Caso queira rodar em seu repositório local e fazer testes ou implementações)
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
+* Projeto usando Javascript e React.
+* Você instalou: Material ui v4, react-router-dom, axios e styled-components.
+Além disto ter um editor de código como [VSCode](https://code.visualstudio.com/)
+
+<h4>:checkered_flag: Rodando o projeto </h4>
+
+```bash
+# Clone este repositório
+$ git clone <https://github.com/future4code/molina-labe-food3>
+
+# Acesse a pasta do projeto no terminal
+$ cd ./molina-labe-food3
+
+# Instale as dependências
+$ npm install
+
+# Para iniciar o projeto
+$ npm run start
+
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+```
 
 <h2 id="funciona">:heavy_check_mark: O que funciona</h2>
 
@@ -48,30 +71,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 
 
-## 💻 Pré-requisitos
 
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
-* Projeto usando Javascript e React.
-* Você instalou: Material ui v4, react-router-dom, axios e styled-components.
-Além disto ter um editor de código como [VSCode](https://code.visualstudio.com/)
-
-<h4>:checkered_flag: Rodando o projeto </h4>
-
-```bash
-# Clone este repositório
-$ git clone <https://github.com/future4code/molina-labe-food3>
-
-# Acesse a pasta do projeto no terminal
-$ cd ./molina-labe-food3
-
-# Instale as dependências
-$ npm install
-
-# Para iniciar o projeto
-$ npm run start
-
-# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
-```
 
 ## 🤝 Colaboradores
 
