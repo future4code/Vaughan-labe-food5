@@ -1,19 +1,43 @@
 # Rappi4A
-Link do Surge: <a href="https://rappi4-5.surge.sh">Rappi4</a>
 
-
-
-
+## Descrição: 
+### Nosso projeto foi criado com a intenção de ter funcionalidades parecidas com Apps de delivery de comida, nosso modelo se assemelha com o Rappi, seguindo seu Layout e Cores. Temos como objetivo fazer o usuário fazer login ou até mesmo criar sua conta, após o login, poderá interagir com os restaurantes, adicionar produtos ao carrinho e visualizar seu pedido em andamento. Teremos uma aba de perfil aonde poderá visualizar seus dados e atualiza-lo conforme for preciso e visualizar o histórico de pedidos feito pelo usuário.  
 
 ## Link do surge - Link para visualização do site
 <a href="https://rappi4-5.surge.sh">Rappi4</a>
 
-Nome dos integrantes: 
-- Filipe Dias Correia
-- Jardel Dos Santos Nepomuceno
-- Anderson Felix
-- Raquel Martins
-- Rafael Terra Salmeron
+
+<h2 id="tecnologias"> 🛠 Tecnologias </h2>
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+* React hooks
+* React Router
+* Global States
+* API
+* Styled-components
+* Material UI
+* Metodologias Ágeis
+* Scrum
+
+
+<h2 id="funciona">:heavy_check_mark: O que funciona</h2>
+
+* Login e Cadastros com validação de campos;
+* Lista e Seleção de restaurantes com filtro por categorias únicas e busca por por nome;
+* Visualizar e Selecionar itens do cardápio de um restaurante;
+* Carrinho para confirmação do pedido, podendo remover itens;
+* Seção de informações do usuário com histórico de pedidos e edição de cadastro;
+
+<h2 id="nao-funciona">:x: O que não funciona</h2>
+
+* N/A -->
+ 
+<h2 id="pendente">:construction: Em desenvolvimento</h2>
+
+- [x] Versão Desktop
+
+
 
 <img src="https://i.postimg.cc/6pzPmdNP/Rappi4-Abertura.png" alt="imagem principal">
 
@@ -21,25 +45,33 @@ Nome dos integrantes:
 ![Pagina Detalhes 1]()
 ![Pagina Detalhes 2]()
 
-## Descrição: 
-### Projeto de visualização de dados da Api Labe-Foods, o usuário é capaz de ver a Página de login, cadastro e Feed com todos os restaurantes e Comidas. Pode ser ultilizado também a finalização de compra e adicionar ou remover itens do carrinho. Caso o usuário queira adicionar ou alterar o endereço também vai está disponível na aba de alterar endereço.
 
-### Ajustes e melhorias
 
-O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
-
-- [x] Tarefa 1 Página de cadastro concluída
-- [x] Tarefa 2 Página de Login concluída
-- [x] Tarefa 3 Página de Adicionar itens ao carrinho
-- [ ] Tarefa 4 Página de Busca.
-- [ ] Tarefa 5 
 
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 * Projeto usando Javascript e React.
 * Você instalou: Material ui v4, react-router-dom, axios e styled-components.
+Além disto ter um editor de código como [VSCode](https://code.visualstudio.com/)
 
+<h4>:checkered_flag: Rodando o projeto </h4>
+
+```bash
+# Clone este repositório
+$ git clone <https://github.com/future4code/molina-labe-food3>
+
+# Acesse a pasta do projeto no terminal
+$ cd ./molina-labe-food3
+
+# Instale as dependências
+$ npm install
+
+# Para iniciar o projeto
+$ npm run start
+
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+```
 
 ## 🤝 Colaboradores
 
