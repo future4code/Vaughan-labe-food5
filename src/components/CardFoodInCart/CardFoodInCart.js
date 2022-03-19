@@ -12,19 +12,33 @@ import {
 } from "./styled";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ModalQuantityFood from "../ModalQuantityFood/ModalQuantityFood";
-import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
+import { GlobalStateContext } from "../Global/GlobalStateContext";
+import styled from "styled-components";
 
-const CardFood = ({
+
+const Badge = styled.div`
+display:flex;
+align-items:center;
+justify-content:center;
+background-color: #E86E5A;
+position: relative;
+top: -40px;
+right: -180px;
+color: #fff;
+padding: 0.5rem;
+height: 10px;
+width: 10px;
+border-radius: 50%;
+`
+
+const CardFoodInCart = ({
   senQuantity,
   prodSelected,
   product,
   quantity,
   addCart,
   onChangeQuantity,
-  onClickAdd,
   onClickRemove,
-  sendBtnChange,
-  showBadge
 }) => {
   const { states, sets } = useContext(GlobalStateContext);
 
@@ -38,28 +52,12 @@ const CardFood = ({
         <img src={product.photoUrl} alt={product.name} />
 
         <CardText>
-          {/* <IconBtn>
-            <Badge
-              color="primary"
-              badgeContent={senQuantity.length > 0 ? senQuantity : 0}
-              showZero
-            >
-              <ShoppingCartIcon color="secondary" />
-            </Badge>
-          </IconBtn> */}
-
-          {showBadge ? (
-            <>
             <IconBtn>
               <ShoppingCartIcon color="secondary" />
             </IconBtn>
-            {senQuantity}
-            </>
-          ) : (
-            <IconBtn>
-              <ShoppingCartIcon color="secondary" />
-            </IconBtn>
-          )}
+            <Badge>{senQuantity}</Badge> 
+            
+          
 
           <Typography color="primary" variant="h5">
             {product.name}
@@ -71,25 +69,12 @@ const CardFood = ({
           </ColorTxt>
           <Typography variant="h6">R$: {product.price}</Typography>
           <ButtonCnt>
-            {sendBtnChange.length > 0 && sendBtnChange.includes('remover') ? <Button onClick={onClickRemove} variant="outlined" color="error">Remover</Button> : <Button onClick={onClickAdd} color="primary" variant="outlined">Adicionar</Button>}
-
-            {/* <Button onClick={onClickAdd} color="primary" variant="outlined">
-              Adicionar
-            </Button> */}
-
+            <Button onClick={onClickRemove} variant="outlined" color="error">Remover</Button>
           </ButtonCnt>
         </CardText>
-        {prodSelected && prodSelected.id && states.openModal && (
-          <ModalQuantityFood
-            quantity={quantity}
-            onChangeQuantity={onChangeQuantity}
-            product={prodSelected}
-            addCart={addCart}
-          />
-        )}
       </CardContainer>
     </div>
   );
 };
 
-export default CardFood;
+export default CardFoodInCart;

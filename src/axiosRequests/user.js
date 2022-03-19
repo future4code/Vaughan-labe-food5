@@ -45,12 +45,12 @@ export const handleAdress = (body, clear, navigate) => {
   axios
     .put(`${BASE_URL}/address`, body, headers)
     .then((res) => {
-      alert("end criado com sucesso");
+      alert("Endereço alterado com sucesso!");
       console.log(res.data);
       clear();
     })
     .catch((error) => {
-      alert("end deu erro");
+      alert("Erro ao modificar endereço");
       console.log(error.response);
     })
 }
@@ -106,7 +106,7 @@ export const getRestaurants = (setRestaurants) => {
   }
   axios
     .get(`${BASE_URL}/restaurants`, headers)
-    .then((response) => setRestaurants(response.data.restaurants))
+    .then((response) => setRestaurants(response.data.restaurant))
     // console.log("Restaurants: ", restaurants);
     .catch((err) => {
       console.log(err.response);

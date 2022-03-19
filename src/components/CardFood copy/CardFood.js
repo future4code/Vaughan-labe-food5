@@ -12,7 +12,7 @@ import {
 } from "./styled";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ModalQuantityFood from "../ModalQuantityFood/ModalQuantityFood";
-import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
+import { GlobalStateContext } from "../Global/GlobalStateContext";
 
 const CardFood = ({
   senQuantity,

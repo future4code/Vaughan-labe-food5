@@ -13,9 +13,6 @@ import { GlobalStateContext } from "../Global/GlobalStateContext";
 
 const quantities = [
   {
-    value: 0,
-  },
-  {
     value: 1,
   },
   {
@@ -70,7 +67,6 @@ const ModalQuantityFood = ({
 }) => {
   const { states, sets } = useContext(GlobalStateContext);
   
-console.log("ADDCART", addCart)
 
   // const handleChange = (event) => {
   //     setQuantity(event.target.value);
@@ -79,15 +75,12 @@ const onCloseModal = () => {
   sets.setOpenModal(false)
 }
 
-console.log("produto fora da função", product)
-
   const addToCart = () => {
   sets.setOpenModal(false)
 
     addCart(
       product, quantity
     )
-console.log("CLICOU ADICIONAR CARRINHO", states.cart)
   };
 
   const style = {

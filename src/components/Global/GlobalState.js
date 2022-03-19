@@ -8,7 +8,11 @@ export const GlobalState = (props) => {
   const [products, setProducts] = useState([]);
   const [openModal, setOpenModal] = useState(false)
   const [cart, setCart] = useState([])
-  
+
+  const [restaurantId, setRestaurantId] = useState("")
+
+  console.log("ESTADO GLOBAL CART", cart)
+
   useEffect(() => {
     pegarRestaurants();
   }, []);
@@ -60,8 +64,8 @@ export const GlobalState = (props) => {
       });
   };
 
-  const states = {openModal, products, restaurants, cart}
-  const sets = {setOpenModal, setProducts, setRestaurants, setCart}
+  const states = {openModal, products, restaurants, cart, restaurantId}
+  const sets = {setOpenModal, setProducts, setRestaurants, setCart, setRestaurantId}
 
   return (
     <GlobalStateContext.Provider value={{ states, sets }}>

@@ -13,7 +13,8 @@ export const theme = createTheme({
     },
     secondary : {
         main: secondaryColor,
-    }
+    },
+
 }
 
 });

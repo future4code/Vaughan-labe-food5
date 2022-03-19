@@ -7,6 +7,9 @@ import { ConteinerInput, PageContainer } from "./styled";
 import { InputAdornment, TextField } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import Navbar from "../../components/Navbar/Navbar";
+import { TextField } from "@material-ui/core";
+import Header from "../../components/Header/Header";
+
 
 const FeedPage = () => {
   const { states } = useContext(GlobalStateContext);
@@ -20,6 +23,7 @@ const FeedPage = () => {
   
   return (
     <div>
+      <Header />
       <PageContainer>
       
         <ConteinerInput>
