@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+
+
+
 export const CartContainer = styled.div`
   margin-bottom: 60px;
   /* min-width: 100vw; */
@@ -220,4 +223,8 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
+`
+
+export const CardMargin = styled.div`
+margin: 1rem;
 `

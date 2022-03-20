@@ -103,7 +103,7 @@ const RestaurantPage = () => {
 
         const quantityOnCart = states.cart && states.cart.map((cart)=>{
           if(cart.id === product.id){
-            return <Badge>{cart.quantity}</Badge>
+            return cart.quantity
           }
         });
 
@@ -143,7 +143,7 @@ const RestaurantPage = () => {
           key={product.id}
           restaurantId={pathParams.id}
           quantity={quantityProduct}
-          senQuantity={quantityOnCart}
+          sendQuantity={quantityOnCart}
           addCart={addCart}
           onChangeQuantity={onChangeQuantity}
           onClickAdd={() => AddProductToCart(product)}
