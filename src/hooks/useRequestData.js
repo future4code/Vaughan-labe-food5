@@ -18,9 +18,7 @@ export function useRequestData(url) {
     axios
       .get(url, {
           headers: {
-            auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkEwMDVtSEJmeVNrdDdPTjBITGFwIiwibmFtZSI6ImFzdHJvZGV2MiIsImVtYWlsIjoiYXN0cm9kZXZAZnV0dXJlNC5jb20iLCJjcGYiOiIwMDg5NTU5OTk5OSIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSdWEgQmFuYW5hcywgMiAtIEJhbmFuYWwiLCJpYXQiOjE2NDczNjczMTV9.kMEJC9zIPFoT8LbSGTVyGQ4rJbJOuEQKze9w-28qKJU"
-              //auth: getAuthToken()
-            // auth: window.localStorage.getItem("token")
+              auth: getAuthToken()
           }
       })
       .then((res) => {

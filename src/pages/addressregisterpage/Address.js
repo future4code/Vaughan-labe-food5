@@ -2,11 +2,13 @@ import React from "react";
 import TextFieldStyled from "@material-ui/core/TextField";
 import {useFormPerfil} from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { Title, SaveEditProfile, EditProfileContainer } from "../../pages/profilepage/styled";
+import {  SaveEditProfile, EditProfileContainer } from "../../pages/profilepage/styled";
 import { handleAdress } from "../../axiosRequests/user";
 import Header from "../../components/Header/Header";
+import { useProtectedPage } from '../../hooks/useProtectedPage'
 
 const Address = () => {
+  useProtectedPage()
   const navigate = useNavigate();
   const [form, onChange, clear] = useFormPerfil({
     street: "",

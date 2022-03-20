@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import CardFood from "../../components/CardFood/CardFood";
-import ModalQuantityFood from "../../components/ModalQuantityFood/ModalQuantityFood";
 import { BASE_URL } from "../../constants/urls";
 import { useRequestData } from "../../hooks/useRequestData";
 import { useParams } from "react-router-dom";
-//import {useProtectedPage} from "../../hooks/useProtectedPage"
+import {useProtectedPage} from "../../hooks/useProtectedPage"
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import { useContext } from "react";
 import Footer from "../../components/Footer/Footer";
@@ -41,7 +40,7 @@ const RestaurantPage = () => {
   const [foods, isLoadingFoods, errorFoods] = useRequestData(
     `${BASE_URL}/restaurants/${pathParams.id}`
   );
-  // useProtectedPage();
+   useProtectedPage();
 
   useEffect(() => {
     sets.setOpenModal(false);
@@ -67,9 +66,7 @@ const RestaurantPage = () => {
 }
 
   const addCart = (product, quantity) => {
-    console.log("QUANTIDADE", quantity)
     let quant = quantity
-    console.log("quant", quant)
     if(quant === 0){
        quant = quant + 1
     }
@@ -97,16 +94,6 @@ const RestaurantPage = () => {
     sets.setRestaurantId(pathParams.id)
   };
 
-  // const checkCategory = (products) => {
-  //   const newCategory = []
-  //  products.forEach(product => {
-  //   if(newCategory.includes(product.category) === false){
-  //     newCategory.push(product.category)
-  //   }
-  //  })
-  //   setCategory(newCategory)
-  //   console.log(category)
-  // }
 
   const listFoods =
     foods &&
@@ -134,7 +121,6 @@ const RestaurantPage = () => {
           states.cart
             .map((item) => {
               if (item.id === product.id) {
-                //  return item.quantity = item.quantity -1
                 return {
                   ...item,
                   quantity: item.quantity - 1,
@@ -148,7 +134,6 @@ const RestaurantPage = () => {
 
         sets.setCart(updateProductsInCart);
 
-        console.log("REMOVI", states.cart);
       };
 
       return (

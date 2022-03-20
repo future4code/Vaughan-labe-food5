@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { SaveEditProfile, EditProfileContainer } from "./styled";
 import { handleProfile } from "../../axiosRequests/user";
 import Header from "../../components/Header/Header";
+import { useProtectedPage } from '../../hooks/useProtectedPage'
 
 const EditProfile = () => {
+  useProtectedPage()
   const navigate = useNavigate();
   const [form, onChange, clear] = useFormPerfil({
     name: "",

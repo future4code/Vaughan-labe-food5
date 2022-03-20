@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "../constants/urls";
-import { goToAdress, goToFeed } from "../router/Coordinator";
+import { goToAdress, goToFeed  } from "../router/Coordinator";
 
 // *************** AXIOS PARA LOGAR ***************** //
 
@@ -166,6 +166,7 @@ export const sendOrder = (id, body, navigate) => {
     .then((res) => {
       alert("Pedido enviado com sucesso!");
       console.log(res.data);
+      goToFeed(navigate)
       // clear();
     })
     .catch((error) => {
