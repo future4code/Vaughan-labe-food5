@@ -188,7 +188,7 @@ const CartPage = () => {
               fullWidth
               style={{ margin: "10px" }}
               onClick={() => {
-                sendOrder(states.restaurantId, body);
+                sendOrder(states.restaurantId, body, "/home");
               }}
             >
               Confirmar
