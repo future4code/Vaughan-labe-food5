@@ -14,8 +14,13 @@ import {
   ButtonContainer,
   PaymentContainer,
   PlaceholderCtn,
+  CardMargin
 } from "./styled";
-import { getProfile, getDetailRestaurant, sendOrder } from "../../axiosRequests/user";
+import {
+  getProfile,
+  getDetailRestaurant,
+  sendOrder,
+} from "../../axiosRequests/user";
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import {
   FormControl,
@@ -26,11 +31,11 @@ import {
 import { Button, Checkbox } from "@material-ui/core";
 import { useRequestData } from "../../hooks/useRequestData";
 import CardFoodInCart from "../../components/CardFoodInCart/CardFoodInCart";
-import cartEmpty  from '../../assets/empty-cart.png'
-import { useProtectedPage } from '../../hooks/useProtectedPage'
+import cartEmpty from "../../assets/empty-cart.png";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 const CartPage = () => {
-  useProtectedPage()
+  useProtectedPage();
 
   const [address, setAddress] = useState({});
   const { states, sets } = useContext(GlobalStateContext);
@@ -40,11 +45,10 @@ const CartPage = () => {
   const [shipping, setShipping] = useState([]);
   const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState([]);
-  const [
-    restaurantDetails
-  ] = useRequestData(`${BASE_URL}/restaurants/${states.restaurantId}`);
+  const [restaurantDetails] = useRequestData(
+    `${BASE_URL}/restaurants/${states.restaurantId}`
+  );
 
- 
   useEffect(() => {
     getProfile(setAddress);
     getDetailRestaurant(states.cart.idRestaurant, setRestaurant);
@@ -64,11 +68,10 @@ const CartPage = () => {
     </AdressContainer>
   );
 
-
-const listProductsInCart = states.cart && states.cart.map((product) => {
-
-
-    const toRemove = () => {
+  const listProductsInCart =
+    states.cart &&
+    states.cart.map((product) => {
+      const toRemove = () => {
         const updateProductsInCart =
           states.cart &&
           states.cart
@@ -86,61 +89,73 @@ const listProductsInCart = states.cart && states.cart.map((product) => {
             });
 
         sets.setCart(updateProductsInCart);
-
       };
 
-    return(
+      return (
         <CardFoodInCart
           product={product}
           key={product.id}
-         senQuantity={product.quantity}
+          sendQuantity={product.quantity}
           onClickRemove={toRemove}
-          
-          />
-    )
-})
+        />
+      );
+    });
 
-
-const body = {
-  "products": states.cart,
-  "paymentMethod": payment,
-}
+  const body = {
+    products: states.cart,
+    paymentMethod: payment,
+  };
 
   return (
-      <>
-        <Header />
-        <CartContainer>
-          {renderAddress}
+    <>
+      <Header />
+      <CartContainer>
+        {renderAddress}
 
-          {restaurantDetails && restaurantDetails.restaurant && (
+        {restaurantDetails && restaurantDetails.restaurant && (
           <RestaurantContainer>
-        <p>{restaurantDetails.restaurant.name}</p>
-        <span>{restaurantDetails.restaurant.address}</span>
-        <span>{restaurantDetails.restaurant.deliveryTime}</span>
-    </RestaurantContainer>)}
+            <p>{restaurantDetails.restaurant.name}</p>
+            <span>{restaurantDetails.restaurant.address}</span>
+            <span>{restaurantDetails.restaurant.deliveryTime}</span>
+          </RestaurantContainer>
+        )}
 
-    {states.cart && states.cart.length > 0 ?  listProductsInCart : <PlaceholderCtn>
-        <h3>O seu carrinho está vazio</h3>
-        <img src={cartEmpty} alt="Carrinho vazio"/>
-        </PlaceholderCtn>}
+        <CardMargin>
+          {states.cart && states.cart.length > 0 ? (
+            listProductsInCart
+          ) : (
+            <PlaceholderCtn>
+              <h3>O seu carrinho está vazio</h3>
+              <img src={cartEmpty} alt="Carrinho vazio" />
+            </PlaceholderCtn>
+          )}
+        </CardMargin>
 
-          
-          {restaurantDetails && restaurantDetails.restaurant && (
+        {restaurantDetails && restaurantDetails.restaurant && (
           <ShippingText>
             <p>Frete: R${restaurantDetails.restaurant.shipping}</p>
           </ShippingText>
+        )}
+
+        {restaurantDetails &&
+          restaurantDetails.restaurant &&
+          states.cart &&
+          states.cart.length > 0 && (
+            <SubtotalPrice>
+              <span>
+                Subtotal: R$
+                {states.cart.reduce((acc, item) => {
+                  return (
+                    acc +
+                    item.price * item.quantity +
+                    Number(`${restaurantDetails.restaurant.shipping}`)
+                  );
+                }, 0)}
+              </span>
+            </SubtotalPrice>
           )}
 
-
-          {restaurantDetails && restaurantDetails.restaurant && states.cart && states.cart.length > 0 && (
-          <SubtotalPrice>
-            <span>Subtotal: R${states.cart.reduce((acc, item) => {
-              return acc + item.price * item.quantity + Number(`${restaurantDetails.restaurant.shipping}`);
-            }, 0)}</span>
-          </SubtotalPrice>
-          )}
-
-          {states.cart && states.cart.length > 0 && (
+        {states.cart && states.cart.length > 0 && (
           <PaymentContainer>
             <p>Forma de pagamento</p>
             <FormControl component="fieldset">
@@ -163,28 +178,26 @@ const body = {
               </RadioGroup>
             </FormControl>
           </PaymentContainer>
-          )}
+        )}
 
-          {states.cart && states.cart.length > 0 && (
+        {states.cart && states.cart.length > 0 && (
           <ButtonContainer>
             <Button
-            
               variant="contained"
               color="primary"
               fullWidth
               style={{ margin: "10px" }}
-              onClick={() => { sendOrder(states.restaurantId, body )}}
-                
+              onClick={() => {
+                sendOrder(states.restaurantId, body);
+              }}
             >
               Confirmar
             </Button>
           </ButtonContainer>
-          )}
-
-
-        </CartContainer>
-        <Footer />
-      </>
+        )}
+      </CartContainer>
+      <Footer />
+    </>
   );
 };
 
