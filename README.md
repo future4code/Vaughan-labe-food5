@@ -101,7 +101,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
       <a href="#">
         <img src="https://avatars.githubusercontent.com/u/85976494?v=4" width="100px;" alt="foto raquel github"/><br>
         <sub>
-          <b>Gabriel Ferreira</b>
+          <b>Raquel Martins</b>
         </sub>
       </a>
     </td>
@@ -118,7 +118,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
       <a href="#">
         <img src="https://avatars.githubusercontent.com/u/94733546?v=4" width="100px;" alt="foto Rafael github"/><br>
         <sub>
-          <b>Jardel Santos</b>
+          <b>Rafael Terra</b>
         </sub>
       </a>
     </td>
