@@ -22,8 +22,10 @@ import {
 import Footer from "../../components/Footer/Footer";
 import useForm from "../../hooks/useForm";
 import Header from "../../components/Header/Header";
+import { useProtectedPage } from '../../hooks/useProtectedPage'
 
 const ProfilePage = () => {
+  useProtectedPage()
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
   const [orderHistory, setOrderHistory] = useState([]);

@@ -1,7 +1,6 @@
 import React from "react";
-import axios from "axios";
 import { BASE_URL } from "../../constants/urls";
-import { useEffect, useState, useContext, createContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import { useNavigate } from "react-router-dom";
@@ -24,14 +23,15 @@ import {
   Radio,
   RadioGroup,
 } from "@material-ui/core";
-import CardFood from "../../components/CardFood/CardFood";
 import { Button, Checkbox } from "@material-ui/core";
-import { RestaurantMenu } from "@material-ui/icons";
 import { useRequestData } from "../../hooks/useRequestData";
 import CardFoodInCart from "../../components/CardFoodInCart/CardFoodInCart";
 import cartEmpty  from '../../assets/empty-cart.png'
+import { useProtectedPage } from '../../hooks/useProtectedPage'
 
 const CartPage = () => {
+  useProtectedPage()
+
   const [address, setAddress] = useState({});
   const { states, sets } = useContext(GlobalStateContext);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -41,9 +41,7 @@ const CartPage = () => {
   const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState([]);
   const [
-    restaurantDetails,
-    isLoadingRestaurantDetails,
-    errorRestaurantDetails,
+    restaurantDetails
   ] = useRequestData(`${BASE_URL}/restaurants/${states.restaurantId}`);
 
  
@@ -76,7 +74,6 @@ const listProductsInCart = states.cart && states.cart.map((product) => {
           states.cart
             .map((item) => {
               if (item.id === product.id) {
-                //  return item.quantity = item.quantity -1
                 return {
                   ...item,
                   quantity: item.quantity - 1,
@@ -90,7 +87,6 @@ const listProductsInCart = states.cart && states.cart.map((product) => {
 
         sets.setCart(updateProductsInCart);
 
-        console.log("REMOVI", states.cart);
       };
 
     return(
@@ -104,13 +100,6 @@ const listProductsInCart = states.cart && states.cart.map((product) => {
     )
 })
 
-const cartId = states.cart && states.cart.map((product) => {
-  return product.id;
-});
-
-const cartQuantity = states.cart && states.cart.map((product) => {
-  return product.quantity;
-});
 
 const body = {
   "products": states.cart,
@@ -118,14 +107,6 @@ const body = {
 }
 
   return (
-    console.log("CARRINHO", states.cart),
-    console.log("RESTAURANTE", restaurant),
-    console.log(body),
-    console.log("ID DO PRODUTO", cartId[0]),
-    console.log("QUANTIDADE", cartQuantity[0]),
-    console.log("ID DO RESTAURANTE", states.restaurantId),
-    console.log("BODY:",body),
-    (
       <>
         <Header />
         <CartContainer>
@@ -204,7 +185,6 @@ const body = {
         </CartContainer>
         <Footer />
       </>
-    )
   );
 };
 

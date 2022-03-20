@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { SaveEditProfile, EditAddressContainer } from "./styled";
 import { handleAdress } from "../../axiosRequests/user";
 import Header from "../../components/Header/Header";
+import { useProtectedPage } from '../../hooks/useProtectedPage'
 
 const EditAddress = () => {
+  useProtectedPage()
   const navigate = useNavigate();
   const [form, onChange, clear] = useFormPerfil({
     street: "",
