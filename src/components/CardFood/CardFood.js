@@ -55,9 +55,9 @@ const CardFood = ({
           {showBadge ? (
             <>
             <IconBtn>
+            {senQuantity}
               <ShoppingCartIcon color="secondary" />
             </IconBtn>
-            {senQuantity}
             </>
           ) : (
             <IconBtn>

@@ -1,6 +1,6 @@
 import React from "react";
 import { BASE_URL } from "../../constants/urls";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, createContext } from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,6 @@ import {
   ButtonContainer,
   PaymentContainer,
   PlaceholderCtn,
-  CardMargin
 } from "./styled";
 import {
   getProfile,
@@ -28,7 +27,9 @@ import {
   Radio,
   RadioGroup,
 } from "@material-ui/core";
+import CardFood from "../../components/CardFood/CardFood";
 import { Button, Checkbox } from "@material-ui/core";
+import { RestaurantMenu } from "@material-ui/icons";
 import { useRequestData } from "../../hooks/useRequestData";
 import CardFoodInCart from "../../components/CardFoodInCart/CardFoodInCart";
 import cartEmpty from "../../assets/empty-cart.png";
@@ -36,7 +37,6 @@ import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 const CartPage = () => {
   useProtectedPage();
-
   const [address, setAddress] = useState({});
   const { states, sets } = useContext(GlobalStateContext);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -45,9 +45,11 @@ const CartPage = () => {
   const [shipping, setShipping] = useState([]);
   const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState([]);
-  const [restaurantDetails] = useRequestData(
-    `${BASE_URL}/restaurants/${states.restaurantId}`
-  );
+  const [
+    restaurantDetails,
+    isLoadingRestaurantDetails,
+    errorRestaurantDetails,
+  ] = useRequestData(`${BASE_URL}/restaurants/${states.restaurantId}`);
 
   useEffect(() => {
     getProfile(setAddress);
@@ -62,7 +64,7 @@ const CartPage = () => {
   ) : (
     <AdressContainer>
       <p>
-        Favor cadastrar um endereçoclicando{" "}
+        Favor cadastrar um endereço clicando{" "}
         <strong onClick={() => navigate("/endereco")}>aqui.</strong>
       </p>
     </AdressContainer>
@@ -77,6 +79,7 @@ const CartPage = () => {
           states.cart
             .map((item) => {
               if (item.id === product.id) {
+                //  return item.quantity = item.quantity -1
                 return {
                   ...item,
                   quantity: item.quantity - 1,
@@ -89,16 +92,30 @@ const CartPage = () => {
             });
 
         sets.setCart(updateProductsInCart);
+
+        console.log("REMOVI", states.cart);
       };
 
       return (
         <CardFoodInCart
           product={product}
           key={product.id}
-          sendQuantity={product.quantity}
+          senQuantity={product.quantity}
           onClickRemove={toRemove}
         />
       );
+    });
+
+  const cartId =
+    states.cart &&
+    states.cart.map((product) => {
+      return product.id;
+    });
+
+  const cartQuantity =
+    states.cart &&
+    states.cart.map((product) => {
+      return product.quantity;
     });
 
   const body = {
@@ -120,16 +137,14 @@ const CartPage = () => {
           </RestaurantContainer>
         )}
 
-        <CardMargin>
-          {states.cart && states.cart.length > 0 ? (
-            listProductsInCart
-          ) : (
-            <PlaceholderCtn>
-              <h3>O seu carrinho está vazio</h3>
-              <img src={cartEmpty} alt="Carrinho vazio" />
-            </PlaceholderCtn>
-          )}
-        </CardMargin>
+        {states.cart && states.cart.length > 0 ? (
+          listProductsInCart
+        ) : (
+          <PlaceholderCtn>
+            <h3>O seu carrinho está vazio</h3>
+            <img src={cartEmpty} alt="Carrinho vazio" />
+          </PlaceholderCtn>
+        )}
 
         {restaurantDetails && restaurantDetails.restaurant && (
           <ShippingText>
@@ -188,7 +203,14 @@ const CartPage = () => {
               fullWidth
               style={{ margin: "10px" }}
               onClick={() => {
-                sendOrder(states.restaurantId, body, "/home");
+                if (address.address) {
+                  sendOrder(states.restaurantId, body);
+                  setTimeout(() => {
+                    navigate("/home");
+                  }, 500);
+                } else {
+                  alert("Favor cadastrar um endereço");
+                }
               }}
             >
               Confirmar

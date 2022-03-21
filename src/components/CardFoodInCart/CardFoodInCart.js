@@ -8,17 +8,30 @@ import {
   ColorTxt,
   ButtonCnt,
   IconBtn,
+  // Badge,
 } from "./styled";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ModalQuantityFood from "../ModalQuantityFood/ModalQuantityFood";
 import { GlobalStateContext } from "../Global/GlobalStateContext";
 import styled from "styled-components";
-import Badge from '@material-ui/core/Badge';
 
-
+const Badge = styled.div`
+display:flex;
+align-items:center;
+justify-content:center;
+background-color: #E86E5A;
+position: relative;
+right: -40px;
+top: -15px;
+color: #fff;
+padding: 0.5rem;
+height: 10px;
+width: 10px;
+border-radius: 50%;
+`
 
 const CardFoodInCart = ({
-  sendQuantity,
+  senQuantity,
   prodSelected,
   product,
   quantity,
@@ -39,9 +52,8 @@ const CardFoodInCart = ({
 
         <CardText>
             <IconBtn>
-            <Badge color="primary" badgeContent={sendQuantity}>
-            <ShoppingCartIcon color="secondary" />
-        </Badge>
+            <Badge>{senQuantity}</Badge> 
+              <ShoppingCartIcon color="secondary" />
             </IconBtn>
             
           

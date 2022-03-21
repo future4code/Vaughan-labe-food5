@@ -8,10 +8,10 @@ import FeedCard from "../../components/FeedCard/FeedCard";
 import { InputAdornment, TextField } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import Header from "../../components/Header/Header";
-import { useProtectedPage } from '../../hooks/useProtectedPage'
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 const SearchPage = () => {
-  useProtectedPage()
+  useProtectedPage();
   const { states } = useContext(GlobalStateContext);
   const { input, onChangeInput } = useInput({ search: "" });
   const navigate = useNavigate();

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { BASE_URL } from "../constants/urls";
-import { goToAdress, goToFeed  } from "../router/Coordinator";
+import { goToAdress, goToFeed } from "../router/Coordinator";
+
+
 
 // *************** AXIOS PARA LOGAR ***************** //
 
@@ -46,7 +48,6 @@ export const handleAdress = (body, clear, navigate) => {
     .put(`${BASE_URL}/address`, body, headers)
     .then((res) => {
       localStorage.setItem("token", res.data.token)
-      alert("Endereço alterado com sucesso!");
       console.log(res.data);
       clear();
     })
@@ -154,7 +155,7 @@ export const getOrderHistory = (setOrders) => {
 
 // *************** AXIOS ENVIAR PEDIDO ***************** //
 
-export const sendOrder = (id, body, navigate) => {
+export const sendOrder = (id, body) => {
   const headers = {
     headers: {
       auth: localStorage.getItem("token")
@@ -164,13 +165,14 @@ export const sendOrder = (id, body, navigate) => {
   axios
     .post(`${BASE_URL}/restaurants/${id}/order`, body, headers)
     .then((res) => {
+      
       alert("Pedido enviado com sucesso!");
       console.log(res.data);
-      goToFeed(navigate)
+      // goToFeed();
       // clear();
     })
     .catch((error) => {
-      alert("Pedido deu erro");
+      alert("Erro ao enviar pedido, lembramos que não é possível fazer outro pedido se já existir um pedido em andamento");
       console.log(error.response);
-    })
+    })  
 }

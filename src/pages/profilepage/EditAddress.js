@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { SaveEditProfile, EditAddressContainer } from "./styled";
 import { handleAdress } from "../../axiosRequests/user";
 import Header from "../../components/Header/Header";
-import { useProtectedPage } from '../../hooks/useProtectedPage'
+import { useProtectedPage } from "../../hooks/useProtectedPage";
+
 
 const EditAddress = () => {
-  useProtectedPage()
+  useProtectedPage();
   const navigate = useNavigate();
   const [form, onChange, clear] = useFormPerfil({
     street: "",
@@ -17,16 +18,14 @@ const EditAddress = () => {
     neighbourhood: "",
     city: "",
     state: "",
-    apartment: "",
+    complement: "",
   });
 
   const handleSubmission = (event) => {
     event.preventDefault();
     handleAdress(form, clear, navigate);
-  };
-
-  const goBack = () => {
-    navigate("/perfil");
+    navigate(-1);
+    alert("Endereço alterado com sucesso!");
   };
 
   return (
@@ -51,8 +50,8 @@ const EditAddress = () => {
           required
         />
         <TextFieldStyled
-          name="apartment"
-          value={form.apartment}
+          name="complement"
+          value={form.complement}
           onChange={onChange}
           variant="outlined"
           label="Complemento"

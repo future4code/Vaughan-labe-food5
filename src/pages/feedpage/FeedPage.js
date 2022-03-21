@@ -1,4 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import {BASE_URL} from '../../constants/urls'
 import FeedCard from "../../components/FeedCard/FeedCard";
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import { useNavigate } from "react-router-dom";
@@ -6,8 +9,10 @@ import Footer from "../../components/Footer/Footer";
 import {
   ConteinerInput,
   PageContainer,
-  OrderActive,
+  ConteinerNav,
+  SectionNavbar,
   OrderActiveCtn,
+  OrderActive,
   CtnTimer,
   ColorWhite,
 } from "./styled";
@@ -16,32 +21,12 @@ import { Search } from "@material-ui/icons";
 import Navbar from "../../components/Navbar/Navbar";
 import Header from "../../components/Header/Header";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
-import { BASE_URL } from "../../constants/urls";
-import axios from "axios";
-import { getAuthToken } from "../../constants/token";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
 
 const FeedPage = () => {
   useProtectedPage();
   const { states, sets } = useContext(GlobalStateContext);
   const [errorOrder, setErrorOrder] = useState("")
   const navigate = useNavigate();
-
-  const getActiveOrder = () => {
-    axios
-      .get(`${BASE_URL}/active-order`, {
-        headers: {
-          auth: getAuthToken(),
-        },
-      })
-      .then((res) => {
-        sets.setOrderStatus(res.data.order);
-        console.log(states.orderStatus)
-      })
-      .catch((err) => {
-        setErrorOrder(err)
-      });
-  };
 
   const goToSearch = () => {
     navigate(`/busca`);
@@ -56,11 +41,27 @@ const FeedPage = () => {
     getActiveOrder();
   }, []);
 
+const getActiveOrder = () => {
+    axios
+      .get(`${BASE_URL}/active-order`, {
+        headers: {
+          auth: localStorage.getItem("token")
+        },
+      })
+      .then((res) => {
+        sets.setOrderStatus(res.data.order);
+        console.log(states.orderStatus)
+      })
+      .catch((err) => {
+        setErrorOrder(err)
+      });
+  };
 
   return (
     <div>
       <Header />
       <PageContainer>
+        
         <ConteinerInput>
           <TextField
             variant="outlined"
@@ -86,7 +87,7 @@ const FeedPage = () => {
               onClickRestaurant={() => goToRestaurantDetail(restaurant.id)}
             />
           ))}
-        {states.orderStatus  && states.orderStatus && states.orderStatus[0] !== null && !errorOrder ? (
+                  {states.orderStatus  && states.orderStatus && states.orderStatus[0] !== null && !errorOrder ?  (
           <OrderActiveCtn>
             <OrderActive>
               <CtnTimer>
@@ -105,7 +106,6 @@ const FeedPage = () => {
           <></>
         )}
       </PageContainer>
-
       <Footer />
     </div>
   );

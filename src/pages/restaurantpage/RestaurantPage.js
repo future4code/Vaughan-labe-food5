@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import CardFood from "../../components/CardFood/CardFood";
+import ModalQuantityFood from "../../components/ModalQuantityFood/ModalQuantityFood";
 import { BASE_URL } from "../../constants/urls";
 import { useRequestData } from "../../hooks/useRequestData";
-import { useParams } from "react-router-dom";
-import {useProtectedPage} from "../../hooks/useProtectedPage"
+import { useParams, useNavigate } from "react-router-dom";
+//import {useProtectedPage} from "../../hooks/useProtectedPage"
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import { useContext } from "react";
 import Footer from "../../components/Footer/Footer";
@@ -12,6 +13,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import {CentralizeLoading, RestaurantPageContainer} from './styled'
 import styled from 'styled-components';
 import Header from "../../components/Header/Header";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 const Badge = styled.div`
 display:flex;
@@ -19,8 +21,8 @@ align-items:center;
 justify-content:center;
 background-color: #E86E5A;
 position: relative;
-top: -40px;
-right: -160px;
+right: -40px;
+top: -15px;
 color: #fff;
 padding: 0.5rem;
 height: 10px;
@@ -29,6 +31,7 @@ border-radius: 50%;
 `
 
 const RestaurantPage = () => {
+  useProtectedPage();
   const [quantityProduct , setQuantityProduct] = useState(0)
   const [productSelected, setProdutcSelected] = useState({})
   const [showBadge, setShowBadge] = useState(false);
@@ -40,7 +43,8 @@ const RestaurantPage = () => {
   const [foods, isLoadingFoods, errorFoods] = useRequestData(
     `${BASE_URL}/restaurants/${pathParams.id}`
   );
-   useProtectedPage();
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     sets.setOpenModal(false);
@@ -66,7 +70,9 @@ const RestaurantPage = () => {
 }
 
   const addCart = (product, quantity) => {
+    console.log("QUANTIDADE", quantity)
     let quant = quantity
+    console.log("quant", quant)
     if(quant === 0){
        quant = quant + 1
     }
@@ -94,7 +100,6 @@ const RestaurantPage = () => {
     sets.setRestaurantId(pathParams.id)
   };
 
-
   const listFoods =
     foods &&
     foods.restaurant &&
@@ -103,8 +108,8 @@ const RestaurantPage = () => {
 
         const quantityOnCart = states.cart && states.cart.map((cart)=>{
           if(cart.id === product.id){
-            return cart.quantity
-          }
+            return <Badge onClick={() => navigate("/carrinho")}>{cart.quantity}</Badge>
+          } 
         });
 
       const changeBtnValue =
@@ -121,6 +126,7 @@ const RestaurantPage = () => {
           states.cart
             .map((item) => {
               if (item.id === product.id) {
+                //  return item.quantity = item.quantity -1
                 return {
                   ...item,
                   quantity: item.quantity - 1,
@@ -134,6 +140,7 @@ const RestaurantPage = () => {
 
         sets.setCart(updateProductsInCart);
 
+        console.log("REMOVI", states.cart);
       };
 
       return (
@@ -143,7 +150,7 @@ const RestaurantPage = () => {
           key={product.id}
           restaurantId={pathParams.id}
           quantity={quantityProduct}
-          sendQuantity={quantityOnCart}
+          senQuantity={quantityOnCart}
           addCart={addCart}
           onChangeQuantity={onChangeQuantity}
           onClickAdd={() => AddProductToCart(product)}
@@ -169,7 +176,7 @@ const RestaurantPage = () => {
       )}
 
       {isLoadingFoods &&  <CentralizeLoading><CircularProgress color="primary" /></CentralizeLoading>}
-      {!isLoadingFoods && errorFoods && <p>Ocorreu um erro, registre seu endereço para ter acesso aos restaurantes</p>}
+      {!isLoadingFoods && errorFoods && <p>Erro</p>}
       {!isLoadingFoods && foods && listFoods}
       {!isLoadingFoods && foods && listFoods.length === 0 && (
         <p>Não há nenhuma postagem</p>

@@ -46,7 +46,6 @@ bottom: 0;
 export const OrderActive = styled.div`
 display: flex;
 align-items:center;
-
 `
 
 export const CtnTimer = styled.div`

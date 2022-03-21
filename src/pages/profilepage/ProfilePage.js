@@ -47,18 +47,18 @@ const ProfilePage = () => {
 
   const renderAddress = profile.address ? (
     <>
-      <AddressContainer>
-        <p>Endereço cadastrado:</p>
-        <p>{profile.address}</p>
-      </AddressContainer>
-      <EditContainer>
-        <CreateIcon onClick={() => goToEditAddress(navigate)} />
-      </EditContainer>
-    </>
+    <AddressContainer>
+            <p>Endereço cadastrado:</p>
+            <p>{profile.address}</p>
+          </AddressContainer>
+          <EditContainer>
+            <CreateIcon onClick={() => goToEditAddress(navigate)} />
+          </EditContainer>
+          </>
   ) : (
     <AddressContainer>
       <p>
-        Favor cadastrar um endereçoclicando{" "}
+        Favor cadastrar um endereço clicando{" "}
         <strong onClick={() => navigate("/endereco")}>aqui.</strong>
       </p>
     </AddressContainer>
@@ -66,52 +66,55 @@ const ProfilePage = () => {
 
   return (
     console.log(orderHistory),
-    (
-      <>
-        <Header />
-        <PageContainer>
-          <Container>
-            <RegisteredProfile>
-              <p>{profile.name}</p>
-              <p>{profile.email}</p>
-              <p>{profile.cpf}</p>
-            </RegisteredProfile>
-            <EditContainer>
-              <CreateIcon onClick={() => goToEditProfile(navigate)} />
-            </EditContainer>
-          </Container>
+    <>
+    <Header />
+      <PageContainer>
+        <Container>
+          <RegisteredProfile>
+            <p>{profile.name}</p>
+            <p>{profile.email}</p>
+            <p>{profile.cpf}</p>
+          </RegisteredProfile>
+          <EditContainer>
+            <CreateIcon onClick={() => goToEditProfile(navigate)} />
+          </EditContainer>
+        </Container>
 
-          <Container2>{renderAddress}</Container2>
+        <Container2>
+          {renderAddress}
+        </Container2>
 
-          <OrderHistoryTitleContainer>
-            <p>Histórico de pedidos</p>
-            <hr />
+        <OrderHistoryTitleContainer>
+          <p>Histórico de pedidos</p>
+          <hr />
 
-            {orderHistory.length > 0 ? (
-              <div>
-                {orderHistory.map((order) => {
-                  return (
-                    <OrderHistoryContainer key={order.id}>
-                      <p>{order.restaurantName}</p>
-                      <span>
-                        {formatDateToLocalDate(order.createdAt)},{" "}
-                        {formatDateToLocalTime(order.createdAt)}
-                      </span>
-                      <br />
-                      <strong>SUBTOTAL: R${order.totalPrice}</strong>
-                    </OrderHistoryContainer>
-                  );
-                })}
-              </div>
-            ) : (
-              <p>Nenhum pedido realizado</p>
-            )}
-          </OrderHistoryTitleContainer>
-        </PageContainer>
 
-        <Footer />
-      </>
-    )
+
+          {orderHistory.length > 0 ? (
+            <div>
+              {orderHistory.map((order) => {
+                return (
+                  <OrderHistoryContainer key={order.id}>
+                    <p>{order.restaurantName}</p>
+                  <span>{formatDateToLocalDate(order.createdAt)}, {formatDateToLocalTime(order.createdAt)}</span>
+                  <br />
+                  <strong>SUBTOTAL: R${order.totalPrice}</strong>
+                  </OrderHistoryContainer>
+                );
+              })}
+            </div>
+      
+              
+          ) : (
+            <p>Nenhum pedido foi realizado ou seu pedido está em andamento.</p>
+          )}
+
+
+        </OrderHistoryTitleContainer>
+      </PageContainer>
+
+      <Footer />
+    </>
   );
 };
 

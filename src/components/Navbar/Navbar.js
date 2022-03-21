@@ -29,7 +29,7 @@ import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
           <li><strong onClick={() => filterByCategory("Sorvetes")}>Carnes</strong></li>
           <li><strong onClick={() => filterByCategory("Baiana")}>Baiana</strong></li>
           <li><strong onClick={() => filterByCategory("Petiscos")}>Petiscos</strong></li>
-          <li><strong onClick={() => filterByCategory("Mexicaníssimo")}>Mexicaníssimo</strong></li>
+          <li><strong onClick={() => filterByCategory("Mexicana")}>Mexicana</strong></li>
           
           </ul>
         </SectionNavbar>
