@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useImperativeHandle } from "react";
 import { BASE_URL } from "../../constants/urls";
 import { useEffect, useState, useContext, createContext } from "react";
 import Footer from "../../components/Footer/Footer";
@@ -203,13 +203,17 @@ const CartPage = () => {
               fullWidth
               style={{ margin: "10px" }}
               onClick={() => {
-                if (address.address) {
-                  sendOrder(states.restaurantId, body);
-                  setTimeout(() => {
-                    navigate("/home");
-                  }, 500);
-                } else {
+                
+                if (!address.address) {
                   alert("Favor cadastrar um endereço");
+                  
+                 
+                } else if (payment === "") {
+                  alert("Favor escolher uma opção de pagamento");
+                } else {
+                    sendOrder(states.restaurantId, body);
+                  
+                    navigate("/home");
                 }
               }}
             >
