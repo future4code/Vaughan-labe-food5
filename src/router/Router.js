@@ -9,7 +9,6 @@ import CartPage from "../pages/cartpage/CartPage";
 import ProfilePage from "../pages/profilepage/ProfilePage";
 import EditProfile from "../pages/profilepage/EditProfile";
 import EditAddress from "../pages/profilepage/EditAddress";
-import OrderPage from "../pages/orderpage/OrderPage";
 import Splashscreen from "../pages/splashscreen/Splashscreen";
 import SearchPage from "../pages/searchPage/SearchPage";
 
@@ -27,7 +26,6 @@ const Router = () => {
       <Route exact path={"/restaurante/:id"} element={<RestaurantPage />} />
       <Route exact path="/carrinho" element={<CartPage />} />
       <Route exact path="/perfil" element={<ProfilePage />} />
-      <Route exact path="/pedidoemandamento" element={<OrderPage />} />
     </Routes>
   );
 };

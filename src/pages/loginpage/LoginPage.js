@@ -41,6 +41,7 @@ const LoginPage = () => {
 
         })
         .catch((error) => {
+            alert('Erro:',error.response.data.message)
             console.log('Deu errado:',error.response.data.message)
         })
     }   

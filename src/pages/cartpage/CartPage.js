@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { BASE_URL } from "../../constants/urls";
 import { useEffect, useState, useContext, createContext } from "react";
 import Footer from "../../components/Footer/Footer";
@@ -16,7 +15,11 @@ import {
   PaymentContainer,
   PlaceholderCtn,
 } from "./styled";
-import { getProfile, getDetailRestaurant, sendOrder } from "../../axiosRequests/user";
+import {
+  getProfile,
+  getDetailRestaurant,
+  sendOrder,
+} from "../../axiosRequests/user";
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import {
   FormControl,
@@ -29,9 +32,11 @@ import { Button, Checkbox } from "@material-ui/core";
 import { RestaurantMenu } from "@material-ui/icons";
 import { useRequestData } from "../../hooks/useRequestData";
 import CardFoodInCart from "../../components/CardFoodInCart/CardFoodInCart";
-import cartEmpty  from '../../assets/empty-cart.png'
+import cartEmpty from "../../assets/empty-cart.png";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 const CartPage = () => {
+  useProtectedPage();
   const [address, setAddress] = useState({});
   const { states, sets } = useContext(GlobalStateContext);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -46,7 +51,6 @@ const CartPage = () => {
     errorRestaurantDetails,
   ] = useRequestData(`${BASE_URL}/restaurants/${states.restaurantId}`);
 
- 
   useEffect(() => {
     getProfile(setAddress);
     getDetailRestaurant(states.cart.idRestaurant, setRestaurant);
@@ -60,17 +64,16 @@ const CartPage = () => {
   ) : (
     <AdressContainer>
       <p>
-        Favor cadastrar um endereçoclicando{" "}
+        Favor cadastrar um endereço clicando{" "}
         <strong onClick={() => navigate("/endereco")}>aqui.</strong>
       </p>
     </AdressContainer>
   );
 
-
-const listProductsInCart = states.cart && states.cart.map((product) => {
-
-
-    const toRemove = () => {
+  const listProductsInCart =
+    states.cart &&
+    states.cart.map((product) => {
+      const toRemove = () => {
         const updateProductsInCart =
           states.cart &&
           states.cart
@@ -93,73 +96,81 @@ const listProductsInCart = states.cart && states.cart.map((product) => {
         console.log("REMOVI", states.cart);
       };
 
-    return(
+      return (
         <CardFoodInCart
           product={product}
           key={product.id}
-         senQuantity={product.quantity}
+          senQuantity={product.quantity}
           onClickRemove={toRemove}
-          
-          />
-    )
-})
+        />
+      );
+    });
 
-const cartId = states.cart && states.cart.map((product) => {
-  return product.id;
-});
+  const cartId =
+    states.cart &&
+    states.cart.map((product) => {
+      return product.id;
+    });
 
-const cartQuantity = states.cart && states.cart.map((product) => {
-  return product.quantity;
-});
+  const cartQuantity =
+    states.cart &&
+    states.cart.map((product) => {
+      return product.quantity;
+    });
 
-const body = {
-  "products": states.cart,
-  "paymentMethod": payment,
-}
+  const body = {
+    products: states.cart,
+    paymentMethod: payment,
+  };
 
   return (
-    console.log("CARRINHO", states.cart),
-    console.log("RESTAURANTE", restaurant),
-    console.log(body),
-    console.log("ID DO PRODUTO", cartId[0]),
-    console.log("QUANTIDADE", cartQuantity[0]),
-    console.log("ID DO RESTAURANTE", states.restaurantId),
-    console.log("BODY:",body),
-    (
-      <>
-        <Header />
-        <CartContainer>
-          {renderAddress}
+    <>
+      <Header />
+      <CartContainer>
+        {renderAddress}
 
-          {restaurantDetails && restaurantDetails.restaurant && (
+        {restaurantDetails && restaurantDetails.restaurant && (
           <RestaurantContainer>
-        <p>{restaurantDetails.restaurant.name}</p>
-        <span>{restaurantDetails.restaurant.address}</span>
-        <span>{restaurantDetails.restaurant.deliveryTime}</span>
-    </RestaurantContainer>)}
+            <p>{restaurantDetails.restaurant.name}</p>
+            <span>{restaurantDetails.restaurant.address}</span>
+            <span>{restaurantDetails.restaurant.deliveryTime}</span>
+          </RestaurantContainer>
+        )}
 
-    {states.cart && states.cart.length > 0 ?  listProductsInCart : <PlaceholderCtn>
-        <h3>O seu carrinho está vazio</h3>
-        <img src={cartEmpty} alt="Carrinho vazio"/>
-        </PlaceholderCtn>}
+        {states.cart && states.cart.length > 0 ? (
+          listProductsInCart
+        ) : (
+          <PlaceholderCtn>
+            <h3>O seu carrinho está vazio</h3>
+            <img src={cartEmpty} alt="Carrinho vazio" />
+          </PlaceholderCtn>
+        )}
 
-          
-          {restaurantDetails && restaurantDetails.restaurant && (
+        {restaurantDetails && restaurantDetails.restaurant && (
           <ShippingText>
             <p>Frete: R${restaurantDetails.restaurant.shipping}</p>
           </ShippingText>
+        )}
+
+        {restaurantDetails &&
+          restaurantDetails.restaurant &&
+          states.cart &&
+          states.cart.length > 0 && (
+            <SubtotalPrice>
+              <span>
+                Subtotal: R$
+                {states.cart.reduce((acc, item) => {
+                  return (
+                    acc +
+                    item.price * item.quantity +
+                    Number(`${restaurantDetails.restaurant.shipping}`)
+                  );
+                }, 0)}
+              </span>
+            </SubtotalPrice>
           )}
 
-
-          {restaurantDetails && restaurantDetails.restaurant && states.cart && states.cart.length > 0 && (
-          <SubtotalPrice>
-            <span>Subtotal: R${states.cart.reduce((acc, item) => {
-              return acc + item.price * item.quantity + Number(`${restaurantDetails.restaurant.shipping}`);
-            }, 0)}</span>
-          </SubtotalPrice>
-          )}
-
-          {states.cart && states.cart.length > 0 && (
+        {states.cart && states.cart.length > 0 && (
           <PaymentContainer>
             <p>Forma de pagamento</p>
             <FormControl component="fieldset">
@@ -182,29 +193,33 @@ const body = {
               </RadioGroup>
             </FormControl>
           </PaymentContainer>
-          )}
+        )}
 
-          {states.cart && states.cart.length > 0 && (
+        {states.cart && states.cart.length > 0 && (
           <ButtonContainer>
             <Button
-            
               variant="contained"
               color="primary"
               fullWidth
               style={{ margin: "10px" }}
-              onClick={() => { sendOrder(states.restaurantId, body )}}
-                
+              onClick={() => {
+                if (address.address) {
+                  sendOrder(states.restaurantId, body);
+                  setTimeout(() => {
+                    navigate("/home");
+                  }, 500);
+                } else {
+                  alert("Favor cadastrar um endereço");
+                }
+              }}
             >
               Confirmar
             </Button>
           </ButtonContainer>
-          )}
-
-
-        </CartContainer>
-        <Footer />
-      </>
-    )
+        )}
+      </CartContainer>
+      <Footer />
+    </>
   );
 };
 

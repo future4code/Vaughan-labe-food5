@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { Title, SaveEditProfile, EditProfileContainer } from "../../pages/profilepage/styled";
 import { handleAdress } from "../../axiosRequests/user";
 import Header from "../../components/Header/Header";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 const Address = () => {
+  useProtectedPage();
   const navigate = useNavigate();
   const [form, onChange, clear] = useFormPerfil({
     street: "",
@@ -14,16 +16,14 @@ const Address = () => {
     neighbourhood: "",
     city: "",
     state: "",
-    apartment: "",
+    complement: "",
   });
 
   const handleSubmission = (event) => {
     event.preventDefault();
     handleAdress(form, clear, navigate);
-  };
-
-  const goBack = () => {
-    navigate("/home");
+    navigate(-1);
+    alert("Endereço alterado com sucesso!");
   };
 
   return (
@@ -49,8 +49,8 @@ const Address = () => {
         required
       />
       <TextFieldStyled
-        name="apartment"
-        value={form.apartment}
+        name="complement"
+        value={form.complement}
         onChange={onChange}
         variant="outlined"
         label="Complemento"

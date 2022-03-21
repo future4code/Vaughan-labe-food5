@@ -9,6 +9,7 @@ export const GlobalState = (props) => {
   const [openModal, setOpenModal] = useState(false)
   const [cart, setCart] = useState([])
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [orderStatus , setOrderStatus] = useState([])
 
   const [restaurantId, setRestaurantId] = useState("")
 
@@ -67,8 +68,8 @@ export const GlobalState = (props) => {
       });
   };
 
-  const states = {openModal, products, restaurants, cart, restaurantId, filteredRestaurants}
-  const sets = {setOpenModal, setProducts, setRestaurants, setCart, setRestaurantId, setFilteredRestaurants}
+  const states = {openModal, products, restaurants, cart, restaurantId, filteredRestaurants, orderStatus}
+  const sets = {setOpenModal, setProducts, setRestaurants, setCart, setRestaurantId, setFilteredRestaurants, setOrderStatus}
 
   return (
     <GlobalStateContext.Provider value={{ states, sets }}>

@@ -22,8 +22,10 @@ import {
 import Footer from "../../components/Footer/Footer";
 import useForm from "../../hooks/useForm";
 import Header from "../../components/Header/Header";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 const ProfilePage = () => {
+  useProtectedPage();
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
   const [orderHistory, setOrderHistory] = useState([]);
@@ -56,7 +58,7 @@ const ProfilePage = () => {
   ) : (
     <AddressContainer>
       <p>
-        Favor cadastrar um endereçoclicando{" "}
+        Favor cadastrar um endereço clicando{" "}
         <strong onClick={() => navigate("/endereco")}>aqui.</strong>
       </p>
     </AddressContainer>
@@ -104,7 +106,7 @@ const ProfilePage = () => {
       
               
           ) : (
-            <p>Nenhum pedido realizado</p>
+            <p>Nenhum pedido foi realizado ou seu pedido está em andamento.</p>
           )}
 
 

@@ -15,15 +15,14 @@ import ModalQuantityFood from "../ModalQuantityFood/ModalQuantityFood";
 import { GlobalStateContext } from "../Global/GlobalStateContext";
 import styled from "styled-components";
 
-
 const Badge = styled.div`
 display:flex;
 align-items:center;
 justify-content:center;
 background-color: #E86E5A;
 position: relative;
-top: -40px;
-right: -180px;
+right: -40px;
+top: -15px;
 color: #fff;
 padding: 0.5rem;
 height: 10px;
@@ -53,9 +52,9 @@ const CardFoodInCart = ({
 
         <CardText>
             <IconBtn>
+            <Badge>{senQuantity}</Badge> 
               <ShoppingCartIcon color="secondary" />
             </IconBtn>
-            <Badge>{senQuantity}</Badge> 
             
           
 

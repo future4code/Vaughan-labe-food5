@@ -3,7 +3,7 @@ import CardFood from "../../components/CardFood/CardFood";
 import ModalQuantityFood from "../../components/ModalQuantityFood/ModalQuantityFood";
 import { BASE_URL } from "../../constants/urls";
 import { useRequestData } from "../../hooks/useRequestData";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 //import {useProtectedPage} from "../../hooks/useProtectedPage"
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
 import { useContext } from "react";
@@ -13,6 +13,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import {CentralizeLoading, RestaurantPageContainer} from './styled'
 import styled from 'styled-components';
 import Header from "../../components/Header/Header";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 const Badge = styled.div`
 display:flex;
@@ -20,8 +21,8 @@ align-items:center;
 justify-content:center;
 background-color: #E86E5A;
 position: relative;
-top: -40px;
-right: -160px;
+right: -40px;
+top: -15px;
 color: #fff;
 padding: 0.5rem;
 height: 10px;
@@ -30,6 +31,7 @@ border-radius: 50%;
 `
 
 const RestaurantPage = () => {
+  useProtectedPage();
   const [quantityProduct , setQuantityProduct] = useState(0)
   const [productSelected, setProdutcSelected] = useState({})
   const [showBadge, setShowBadge] = useState(false);
@@ -41,7 +43,8 @@ const RestaurantPage = () => {
   const [foods, isLoadingFoods, errorFoods] = useRequestData(
     `${BASE_URL}/restaurants/${pathParams.id}`
   );
-  // useProtectedPage();
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     sets.setOpenModal(false);
@@ -97,17 +100,6 @@ const RestaurantPage = () => {
     sets.setRestaurantId(pathParams.id)
   };
 
-  // const checkCategory = (products) => {
-  //   const newCategory = []
-  //  products.forEach(product => {
-  //   if(newCategory.includes(product.category) === false){
-  //     newCategory.push(product.category)
-  //   }
-  //  })
-  //   setCategory(newCategory)
-  //   console.log(category)
-  // }
-
   const listFoods =
     foods &&
     foods.restaurant &&
@@ -116,8 +108,8 @@ const RestaurantPage = () => {
 
         const quantityOnCart = states.cart && states.cart.map((cart)=>{
           if(cart.id === product.id){
-            return <Badge>{cart.quantity}</Badge>
-          }
+            return <Badge onClick={() => navigate("/carrinho")}>{cart.quantity}</Badge>
+          } 
         });
 
       const changeBtnValue =

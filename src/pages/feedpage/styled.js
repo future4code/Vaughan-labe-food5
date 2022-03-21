@@ -31,3 +31,28 @@ export const SectionNavbar = styled.div`
     }
 
 `
+
+export const OrderActiveCtn = styled.div`
+display: flex;
+flex-direction:column;
+padding: 1rem;
+min-width: 100vw;
+height: 20vh;
+background-color: #E86E5A;
+position:fixed;
+bottom: 0;
+`
+
+export const OrderActive = styled.div`
+display: flex;
+align-items:center;
+`
+
+export const CtnTimer = styled.div`
+color: #FEFEFE;
+padding-right: 1rem;
+`
+
+export const ColorWhite = styled.span`
+color: #FEFEFE;
+`
