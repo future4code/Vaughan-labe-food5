@@ -85,7 +85,7 @@ const FeedPage = () => {
               onClickRestaurant={() => goToRestaurantDetail(restaurant.id)}
             />
           ))}
-        {states.orderStatus && states.orderStatus ? (
+        {states.orderStatus && states.orderStatus !== null && states.orderStatus.length > 0 ? (
           <OrderActiveCtn>
             <OrderActive>
               <CtnTimer>
