@@ -11,6 +11,7 @@ export const FooterCard = styled.div`
   background-color: white;
   display: flex;
   justify-content: space-around;
+  z-index: 999;
 `;
 
 export const Item1 = styled.div`

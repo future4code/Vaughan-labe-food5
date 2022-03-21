@@ -13,9 +13,10 @@ import {
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ModalQuantityFood from "../ModalQuantityFood/ModalQuantityFood";
 import { GlobalStateContext } from "../../components/Global/GlobalStateContext";
+import Badge from '@material-ui/core/Badge';
 
 const CardFood = ({
-  senQuantity,
+  sendQuantity,
   prodSelected,
   product,
   quantity,
@@ -38,16 +39,19 @@ const CardFood = ({
         <img src={product.photoUrl} alt={product.name} />
 
         <CardText>
-          {/* <IconBtn>
+          <IconBtn>
             <Badge
               color="primary"
-              badgeContent={senQuantity.length > 0 ? senQuantity : 0}
+              badgeContent={sendQuantity.length > 0 ? sendQuantity : 0}
               showZero
+              
             >
               <ShoppingCartIcon color="secondary" />
             </Badge>
-          </IconBtn> */}
+          </IconBtn>
 
+
+{/* 
           {showBadge ? (
             <>
             <IconBtn>
@@ -59,7 +63,7 @@ const CardFood = ({
             <IconBtn>
               <ShoppingCartIcon color="secondary" />
             </IconBtn>
-          )}
+          )} */}
 
           <Typography color="primary" variant="h5">
             {product.name}

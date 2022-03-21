@@ -7,16 +7,18 @@ import {TextField, InputAdornment, IconButton} from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Logo from "../../assets/logo/logoLogin.svg"
-
+import {useUnProtectedPage} from '../../hooks/useUnProtectedPage'
 
 
 const LoginPage = () => {
-    const history = useNavigate()
+    useUnProtectedPage()
+    const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
+    
     
 
     const onChangeEmail = (event) => {
@@ -28,16 +30,14 @@ const LoginPage = () => {
     }
 
     const onSubmitLogin = () => {
-        console.log(email, password)
         const body = {
             email: email,
             password: password
         }
         axios.post(`${BASE_URL}/login`, body)
         .then((response) => {
-        console.log('Deu certo:',response.data.token)
         localStorage.setItem('token',response.data.token)
-            history('/home')
+            navigate('/home')
 
         })
         .catch((error) => {
@@ -93,7 +93,7 @@ const LoginPage = () => {
         <EntrarPageContainer onClick={onSubmitLogin}> <strong> Entrar </strong></EntrarPageContainer>
         <ContainerCentral> 
         <h4> Não possui cadastro? Clique <span onClick={() =>
-         history('/cadastro')
+         navigate('/cadastro')
         }> aqui.</span> 
         </h4>
         </ContainerCentral>

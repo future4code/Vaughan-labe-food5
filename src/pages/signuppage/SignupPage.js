@@ -16,8 +16,10 @@ import {
   ContainerCentral,
   ContainerPagina,
 } from "./styled";
+import {useUnProtectedPage} from '../../hooks/useUnProtectedPage'
 
 const SignupPage = () => {
+  useUnProtectedPage()
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
@@ -36,7 +38,6 @@ const SignupPage = () => {
         .post(`${BASE_URL}/signup`, form)
         .then((response) => {
           alert("Cadastro realizado com sucesso! Peça seu pedido!");
-          console.log("Deu certo:", response.data.token);
           localStorage.setItem("token", response.data.token);
           goToFeed(navigate);
         })
