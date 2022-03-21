@@ -42,6 +42,7 @@ const SignupPage = () => {
         })
         .catch((error) => {
           console.log("Deu errado:", error.response.data.message);
+          alert(error.response.data.message);
         });
     } else {
       alert("Deve ser a mesma senha anterior.");
