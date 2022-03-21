@@ -169,7 +169,7 @@ const RestaurantPage = () => {
       )}
 
       {isLoadingFoods &&  <CentralizeLoading><CircularProgress color="primary" /></CentralizeLoading>}
-      {!isLoadingFoods && errorFoods && <p>Erro</p>}
+      {!isLoadingFoods && errorFoods && <p>Ocorreu um erro, registre seu endereço para ter acesso aos restaurantes</p>}
       {!isLoadingFoods && foods && listFoods}
       {!isLoadingFoods && foods && listFoods.length === 0 && (
         <p>Não há nenhuma postagem</p>
