@@ -44,7 +44,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 * Finalização do pedido
 
 <h2 id="link">:link: Link Surge - link para visualização do site</h2>
-<a href="https://needless-judge.surge.sh/login">Rappi4</a>
+<a href="https://secretive-army.surge.sh">Rappi4</a>
 <h2 id="imagens">	:iphone: Imagens Mobile</h2>
 
 ![image](https://user-images.githubusercontent.com/94733546/159110599-b3cbd39f-9df5-48a5-b479-07ece8572d99.png)
