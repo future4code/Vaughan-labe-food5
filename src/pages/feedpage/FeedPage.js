@@ -24,7 +24,7 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 const FeedPage = () => {
   useProtectedPage();
   const { states, sets } = useContext(GlobalStateContext);
-
+  const [errorOrder, setErrorOrder] = useState("")
   const navigate = useNavigate();
 
   const getActiveOrder = () => {
@@ -36,9 +36,10 @@ const FeedPage = () => {
       })
       .then((res) => {
         sets.setOrderStatus(res.data.order);
+        console.log(states.orderStatus)
       })
       .catch((err) => {
-        console.log(err);
+        setErrorOrder(err)
       });
   };
 
@@ -85,7 +86,7 @@ const FeedPage = () => {
               onClickRestaurant={() => goToRestaurantDetail(restaurant.id)}
             />
           ))}
-        {states.orderStatus && states.orderStatus !== null && states.orderStatus.length > 0 ? (
+        {states.orderStatus  && states.orderStatus && states.orderStatus[0] !== null && !errorOrder ? (
           <OrderActiveCtn>
             <OrderActive>
               <CtnTimer>
