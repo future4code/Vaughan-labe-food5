@@ -45,7 +45,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 * Controle dos formulários (enviar apenas números no CPF)
 
 <h2 id="link">:link: Link Surge - link para visualização do site</h2>
-<a href="http://assorted-chickens.surge.sh/">Rappi4</a>
+<a href="http://rappi4-vaughan5.surge.sh/" target='_blank' >Rappi4</a>
 <h2 id="imagens">	:iphone: Imagens Mobile</h2>
 
 ![image](https://user-images.githubusercontent.com/94733546/159110599-b3cbd39f-9df5-48a5-b479-07ece8572d99.png)
