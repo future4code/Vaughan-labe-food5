@@ -1,68 +1,119 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Rappi4A
+<h1 align="center" id="top">:plate_with_cutlery: Rappi4A :plate_with_cutlery:</h1>
 
-## Available Scripts
+<p align="center">
+  <a href="#sobre">Sobre</a> &#xa0; | &#xa0; 
+  <a href="#funciona">O que funciona</a> &#xa0; | &#xa0;
+ <a href="#link">Link</a> &#xa0; | &#xa0;
+  <a href="#pendente">Pendências</a> &#xa0; | &#xa0;
+  <a href="#requisitos">Pré requisitos</a> &#xa0; | &#xa0;
+  <a href="#desenvolvedores">Desenvolvedores</a>
+</p>
 
-In the project directory, you can run:
+<h2 id="sobre">:notebook: Sobre </h2>
 
-### `npm start`
+<p align="center">:plate_with_cutlery: Projeto desenvolvido conforme proposta do bootcamp ministrado pela Labenu para criação de um aplicativo para mobile similar ao aplicativo de entregas de delivery, inspirado no rappi.</p>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h2 id="tecnologias"> 🛠 Tecnologias </h2>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+As seguintes ferramentas foram usadas na construção do projeto:
 
-### `npm test`
+* React hooks
+* React Router
+* API
+* Styled-components
+* Material UI
+* Global State
+* Metodologias ágeis
+* Scrum
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h2 id="funciona">:heavy_check_mark: O que funciona</h2>
 
-### `npm run build`
+* Adicionar itens ao carrinho
+* Remover itens do carrinho
+* Selecionar restaurante e filtrar por categoria
+* Realizar login e signup
+* Realizar pedido
+* Mostrar ao usuário se o pedido está em andamento
+* Responsividade
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h2 id="pendente">:construction: Em desenvolvimento</h2>
 
-### `npm run eject`
+* Loading das páginas
+* Controle dos formulários (enviar apenas números no CPF)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<h2 id="link">:link: Link Surge - link para visualização do site</h2>
+<a href="http://rappi4-vaughan5.surge.sh/" target="_blank">Rappi4</a>
+<h2 id="imagens">	:iphone: Imagens Mobile</h2>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image](https://user-images.githubusercontent.com/94733546/159110599-b3cbd39f-9df5-48a5-b479-07ece8572d99.png)
+![image](https://user-images.githubusercontent.com/94733546/159110613-1059cd64-95b6-44a6-96a7-56971fa9aec8.png)
+![image](https://user-images.githubusercontent.com/94733546/159110637-e5ecec3a-bc1b-4d42-9204-e3c7ed884ea6.png)
+![image](https://user-images.githubusercontent.com/94733546/159110682-f93b35e3-99bf-4a67-8072-15c7b10e8463.png)
+![image](https://user-images.githubusercontent.com/94733546/159110771-067cd027-91e3-4790-8aaa-cc23d3c1ef38.png)
+![image](https://user-images.githubusercontent.com/94733546/159110785-d9a3fc5b-7ed4-4dfe-a3c6-d05482e7856b.png)
+![image](https://user-images.githubusercontent.com/94733546/159110792-ca81c2e0-7e04-458a-88f0-c2fb5f4bdb35.png)
+![image](https://user-images.githubusercontent.com/94733546/159110809-41e5057b-59be-45e6-b35f-efc057f7e9cf.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<h2 id="requisitos">:leftwards_arrow_with_hook: Pré-requisitos</h2>
 
-## Learn More
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<h4>:checkered_flag: Rodando o projeto </h4>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+# Clone este repositório
+$ git clone <https://github.com/future4code/Vaughan-labe-food5.git>
 
-### Code Splitting
+# Acesse a pasta do projeto no terminal
+$ cd ./Vaughan-labe-food5
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+# Instale as dependências
+$ npm install
 
-### Analyzing the Bundle Size
+# Para iniciar o projeto
+$ npm run start
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+```
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+<h2 id="desenvolvedores">:construction_worker: Desenvolvedores</h2>
 
-### Advanced Configuration
+<table> 
+<tr>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+<td align="center"><a href="https://github.com/Raquelmms"><img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/85976494?v=4" width="100px" alt=""/>
+ <br />
+ <sub><b>Raquel Martins</b></sub></a> <a href="https://github.com/Raquelmms"></a></td>
 
-### Deployment
+ <td align="center"><a href="https://github.com/FillipeCO"><img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/87552890?v=4" width="100px" alt=""/>
+ <br />
+ <sub><b>Fillipe Dias Correia</b></sub></a> <a href="https://github.com/FillipeCO"></a></td>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+ <td align="center"><a href="https://github.com/rafasalmeron"><img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/94733546?v=4" width="100px" alt=""/>
+ <br />
+ <sub><b>Rafael Salmeron</b></sub></a> <a href="https://github.com/rafasalmeron"></a></td>
+ 
+ <td align="center"><a href="https://github.com/jardell13"><img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/86195881?v=4" width="100px" alt=""/>
+ <br />
+ <sub><b>Jardel Santos</b></sub></a> <a href="https://github.com/jardell13"></a></td>
+ 
+  <td align="center"><a href="https://github.com/Anderson-Felix-de-Lyra"><img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/94788717?v=4" width="100px" alt=""/>
+ <br />
+ <sub><b>Anderson Felix</b></sub></a> <a href="https://github.com/Anderson-Felix-de-Lyra"></a></td>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+</tr>
+
+</table>
+
+👋🏽 Entre em contato!
+
+<a href="#top">Voltar para o topo</a>
